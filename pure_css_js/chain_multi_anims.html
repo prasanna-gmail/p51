@@ -53,14 +53,16 @@
             margin: auto;
             transform:
                 translate3d(0, 40%, 0) rotateX(70deg) rotateY(0deg) rotateZ(80deg);
-            animation-name:
-                laydown, falling;
+            /* animation-name:
+                laydown, laydown;
             animation-duration:
-                2000ms, 1000ms;
+              3000ms, 1000ms; */
             animation-timing-function:
                 ease-in, ease-out;
             animation-iteration-count:
                 1, 1;
+                animation: falling 3s, laydown 1s;
+
         }
     </style>
     <title>Document</title>
