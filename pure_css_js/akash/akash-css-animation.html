@@ -9,10 +9,10 @@
 <body>
     <div id="falling-card-parent">
         <div id="falling-card" class="box">
-          <div class="molecule"></div>
-          <div class="molecule molecule2"></div>
-          <div class="molecule molecule3"></div>
-          <div class="molecule molecule4"></div>
+          <div class="molecule"> <span></span> </div>
+          <div class="molecule molecule2"><span></span></div>
+          <div class="molecule molecule3"><span></span></div>
+          <div class="molecule molecule4"><span></span></div>
 
 
         </div>
@@ -32,8 +32,8 @@
       }
 
       .molecule{
-        background: red;
-        border-radius: 50%;
+        
+        
         width: 20px;
         height: 20px;
         display: inline-block;
@@ -43,27 +43,35 @@
         animation: animDown 7s 2s linear infinite;
         opacity: 0.5;
       }
+      .molecule span{ background: red; 
+        width: 100%; height: 100%; 
+        display: block; 
+        border-radius: 50%;
+        animation: shake 0.5s 0.5s linear infinite; 
+      }
+
 
       .molecule2{
-        background: yellow;
+        
         animation-delay: 1.8s;
         top: 10px;
         right: 6%;
       }
-
+      .molecule2 span{ background: yellow;}
+      
       .molecule3{
-        background: blue;
         animation-delay: 2.2s;
         right: 3%;
-
       }
+      .molecule3 span{ background: blue;}
       .molecule4{
-        background: rgb(255, 0, 64);
-        animation-delay: 2.4s;
+        animation-delay: 1.6s;
         right: 4%;
         top: 5px;
 
       }
+      .molecule4 span{ background: rgb(255, 0, 64);}
+
 
       @keyframes animDown {
         0%{
@@ -100,6 +108,21 @@
           transform: translateY(360px) translateX(-160px);
         }         
       }
+      
+      @-webkit-keyframes shake {
+  0%  { -webkit-transform:     translate(2px, 1px) rotate(0deg); }
+  10% { -webkit-transform:     translate(-1px, -2px) rotate(-2deg); }
+  20% { -webkit-transform:     translate(-3px, 0px) rotate(3deg); }
+  30% { -webkit-transform:     translate(0px, 2px) rotate(0deg); }
+  40% { -webkit-transform:     translate(1px, -1px) rotate(1deg); }
+  50% { -webkit-transform:     translate(-1px, 2px) rotate(-1deg); }
+  60% { -webkit-transform:     translate(-3px, 1px) rotate(0deg); }
+  70% { -webkit-transform:     translate(2px, 1px) rotate(-2deg); }
+  80% { -webkit-transform:     translate(-1px, -1px) rotate(4deg); }
+  90% { -webkit-transform:     translate(2px, 2px) rotate(0deg); }
+  100%{ -webkit-transform:     translate(1px, -2px) rotate(-1deg); }
+ }
+    
 
        
 
