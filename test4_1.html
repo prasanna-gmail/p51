@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        canvas {
+            border: 1px solid #ad0e0e;
+        }
+    </style>
+    <title>Canvas Drawing on Pan Start</title>
+</head>
+
+<body>
+    <canvas id="drawingCanvas" width="500" height="500"></canvas>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the canvas element and its context
+            var canvas = document.getElementById('drawingCanvas');
+            var context = canvas.getContext('2d');
+
+            var isDrawing = false;
+
+            // Add touch event listeners
+            canvas.addEventListener('touchstart', handleStart, false);
+            canvas.addEventListener('touchmove', handleMove, false);
+            canvas.addEventListener('touchend', handleEnd, false);
+
+            function handleStart(event) {
+                event.preventDefault();
+                isDrawing = true;
+                var touch = event.touches[0];
+                context.beginPath();
+                context.moveTo(touch.clientX - canvas.offsetLeft, touch.clientY - canvas.offsetTop);
+            }
+
+            function handleMove(event) {
+                event.preventDefault();
+                if (!isDrawing) return;
+                var touch = event.touches[0];
+                context.lineTo(touch.clientX - canvas.offsetLeft, touch.clientY - canvas.offsetTop);
+                context.stroke();
+            }
+
+            function handleEnd() {
+                isDrawing = false;
+                context.closePath();
+            }
+        });
+    </script>
+</body>
+
+</html>

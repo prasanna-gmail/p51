@@ -1,0 +1,62 @@
+<style>
+    div.at-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .at-item {
+        width: 20px;
+        height: 20px;
+        border-radius: 50px;
+        background-color: #50ed50;
+
+        animation-name: slide-bl;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: none;
+
+        /* shorthand
+		animation: slide-bl 1s linear 0s 1 normal none;*/
+    }
+
+    .at-item1 {
+        width: 20px;
+        height: 20px;
+        border-radius: 50px;
+        background-color: #50ed50;
+
+        animation-name: slide-bl;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: none;
+
+        /* shorthand
+		animation: slide-bl 1s linear 0s 1 normal none;*/
+    }
+
+    @keyframes slide-bl {
+
+        0% {
+            transform: translateY(0) translateX(0);
+        }
+
+        100% {
+            transform: translateY(100px) translateX(-100px);
+        }
+    }
+</style>
+<div class='at-container'>
+    <div class='at-item1'></div>
+</div>
+
+<script>
+
+</script>

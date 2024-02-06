@@ -1,0 +1,39 @@
+<!doctype html>
+
+<body>
+    <!-- <h2 onclick="this.classList.toggle('animated')">click me to start / stop</h2> -->
+    <div onclick="this.classList.toggle('animated')" class="cir1">red</div>
+    <style>
+        .cir1 {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(195, 43, 226);
+            border-radius: 50%;
+        }
+
+        .animated {
+            animation: hello-goodbye 1.8s infinite;
+            width: fit-content;
+        }
+
+        @keyframes hello-goodbye {
+            0% {
+                transform: translateX(230px) translateY(0px);
+                /* transform: translateY(-60px) rotateX(0.7turn); */
+                opacity: 0;
+            }
+
+            50% {
+                /* transform: none; */
+                opacity: 1;
+                transform: translateX(230px) translateY(60px);
+            }
+
+            100% {
+                /* transform: translateX(230px) translateY(160px) rotateZ(90deg) scale(1); */
+                transform: translateX(230px) translateY(160px);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>

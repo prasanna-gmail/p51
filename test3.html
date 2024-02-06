@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+    <title>Digestive System Simulation</title>
+</head>
+
+<body>
+    <canvas id="digestiveCanvas" width="600" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('digestiveCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Initial position of food
+        let foodPosition = { x: 50, y: 50 };
+
+        function drawDigestiveSystem() {
+            // Draw mouth
+            ctx.fillStyle = '#ffcc66';
+            ctx.fillRect(50, 350, 50, 20);
+
+            // Draw esophagus
+            ctx.fillStyle = '#ccffcc';
+            ctx.fillRect(100, 300, 30, 50);
+
+            // Draw stomach
+            ctx.fillStyle = '#ff6666';
+            ctx.fillRect(130, 300, 100, 100);
+
+            // Draw intestines
+            ctx.fillStyle = '#ccffcc';
+            ctx.fillRect(230, 300, 30, 50);
+            ctx.fillRect(260, 325, 30, 50);
+            ctx.fillRect(290, 350, 30, 50);
+
+            // Draw food
+            ctx.fillStyle = '#996633';
+            ctx.beginPath();
+            ctx.arc(foodPosition.x, foodPosition.y, 10, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        function moveFood() {
+            // Move food to simulate digestion
+            foodPosition.y += 1;
+
+            // Check if food reaches the end of intestines, then reset its position
+            if (foodPosition.y > 400) {
+                foodPosition.y = 50;
+            }
+        }
+
+        function updateCanvas() {
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the digestive system
+            drawDigestiveSystem();
+
+            // Move the food
+            moveFood();
+
+            // Request animation frame for the next frame
+            requestAnimationFrame(updateCanvas);
+        }
+
+        // Start the simulation
+        updateCanvas();
+    </script>
+</body>
+
+</html>

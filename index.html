@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sketch</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head>
+
+<body>
+  <script src="vehicle.js"></script>
+  <script src="sketch_path2.js"></script>
+  <div>
+    <button onclick="follow()">GO!</button>
+    <button onclick="nofollow()">STOP!</button>
+    <button onclick="newPath()">New Path</button>
+    <p>Speed:</p>
+    <input type="range" min="1" max="99" class="slider" value="80">
+  </div>
+</body>
+
+</html>

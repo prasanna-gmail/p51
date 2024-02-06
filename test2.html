@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digestive System Simulation</title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <button onclick="startDigestion()">Start Digestion</button>
+
+    <script>
+        function startDigestion() {
+            const outputDiv = document.getElementById('output');
+
+            function log(message) {
+                outputDiv.innerHTML += message + '<br>';
+            }
+
+            log('Digestive System Simulation Started');
+
+            // Ingestion
+            log('Ingesting food...');
+            setTimeout(() => {
+                // Digestion in the stomach
+                log('Food is in the stomach, digestion begins...');
+                setTimeout(() => {
+                    // Move to the small intestine
+                    log('Food moves to the small intestine for further digestion...');
+                    setTimeout(() => {
+                        // Absorption in the small intestine
+                        log('Nutrients are being absorbed in the small intestine...');
+                        setTimeout(() => {
+                            // Move to the large intestine
+                            log('Indigestible materials move to the large intestine...');
+                            setTimeout(() => {
+                                // Elimination
+                                log('Waste is eliminated from the body. Digestion complete.');
+                            }, 2000);
+                        }, 2000);
+                    }, 2000);
+                }, 2000);
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
