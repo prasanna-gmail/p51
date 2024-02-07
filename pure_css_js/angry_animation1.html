@@ -12,8 +12,12 @@
         font-size: 3em;
         width: 20px;
     }
+
+    #dred {
+        background-color: rgb(114, 20, 208);
+    }
 </style>
-<div class='at-container'>
+<!-- <div class='at-container'>
     <svg id='protein' class='cir1' viewBox="0 0 64 64">
         <title>1</title>
         <path
@@ -22,14 +26,54 @@
             d="M41,5.457c-4.173,0-8.41064,2.78864-12.0116,7.86939C15.14323,4.65686,3.95516,28.29886,4.00007,39.54294A18.97307,18.97307,0,0,0,37.18457,52.1402,18.95642,18.95642,0,0,0,60,33.53711C60,23.9248,51.97656,5.457,41,5.457ZM23,56.543a17.019,17.019,0,0,1-17-17c0-9.8291,7.94531-26.09082,17-26.09082a9.72558,9.72558,0,0,1,5.6994,2.08874C35.14447,20.24512,40,31.85931,40,39.543A17.019,17.019,0,0,1,23,56.543Zm18-6.00586a16.9406,16.9406,0,0,1-2.39917-.17822A18.88072,18.88072,0,0,0,42,39.543c0-7.2088-4.50909-19.39557-11.39111-25.04572C43.22943-4.06839,57.63362,18.68733,58.00015,33.53731A17.01919,17.01919,0,0,1,41,50.53711Z" />
     </svg>
 
-</div>
+</div> -->
+<div id='dred'>red</div>
+<div class="newspaper">newspaper</div>
 <script>
-    document.getElementById('protein').animate([
+
+    var elem = document.getElementById('dred');
+    console.log("pkp timechange: ~ elem:", elem)
+
+    // elem.animate({
+    //     color: ['blue', 'green', 'yellow'],
+    //     easing: 'ease-in-out'
+    // }, 2000);
+
+    // elem.animate({ color: ['red', 'green', 'blue'] },
+    //     { duration: 2000, easing: 'ease-in-out' });
+
+
+
+
+    var effect = new KeyframeEffect(elem, {
+        opacity: 0
+    }, 5000);
+    var animation = new Animation(effect, elem.ownerDocument.timeline);
+    animation.play();
+
+    /////////////// 2  ///////////
+    const newspaperSpinning = [
+        { transform: "rotate(0) scale(1)" },
+        { transform: "rotate(360deg) scale(0)" },
+    ];
+
+    const newspaperTiming = {
+        duration: 2000,
+        iterations: 1,
+    };
+
+    const newspaper = document.querySelector(".newspaper");
+    console.log("pkp timechange: ~ newspaper:", newspaper)
+
+    newspaper.addEventListener("click", () => {
+        // newspaper.animate(newspaperSpinning, newspaperTiming);
+        animation.pause()
+    });
+
+    /* document.getElementById('protein').animate([
         {
             offset: 0,
             opacity: 1,
-            transform: translate(64px, 44px);
-
         },
         {
             offset: 0.25,
@@ -58,5 +102,5 @@
         iterations: 3,
         direction: 'normal',
         fill: 'none'
-    });
+    }); */
 </script>
