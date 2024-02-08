@@ -9,7 +9,7 @@
 <body>
   <button onclick="paushEvt()">Pause</button>
   <button onclick="playEvt()">Play</button>
-  <button onclick="generateEle()">Add</button>
+  <button onclick="generateEleGroup()">Add</button>
     <div id="falling-card-parent">
       <div id="mydivheader1"> </div>             
      
@@ -95,8 +95,19 @@
         animation-delay: 1.6s;
         right: 4%;
         top: 5px;
-
       }
+      .molecule5{
+        animation-delay: 1.6s;
+        right: 5%;
+        top: 3px;
+      }
+      .molecule6{
+        animation-delay: 1.6s;
+        right: 8%;
+        top: 6px;
+      }
+
+
       .molecule4 span{ background: rgb(255, 0, 64);}
 
       .green-box{
@@ -110,16 +121,23 @@
         animation-delay: 0s!important;
       }
       .red-v1-to-orange{
-        transform: translateY(452px) translateX(281px);
+        transform: translateY(452px) translateX(253px);
         animation-name: red-v1-to-orange;
         animation-delay: 0s!important;
       }
 
       .red-v1-to-yellow{
-        transform: translateY(454px) translateX(252px);
+        transform: translateY(452px) translateX(281px);
         animation-name: red-v1-to-yellow;
         animation-delay: 0s!important;
       }
+      .red-v1-to-blue{
+        transform: translateY(452px) translateX(281px);
+        animation-name: red-v1-to-blue;
+        animation-delay: 0s!important;
+      }
+
+      
 
       
       @keyframes animDown {
@@ -131,12 +149,9 @@
         }
         20%{
           transform: translateY(262px) translateX(109px);
-
         }
         30%{
-          transform: translateY(519px) translateX(83px);
-
-
+          transform: translateY(600px) translateX(83px);
         }
         40%{
           transform: translateY(600px) translateX(150px);
@@ -147,11 +162,11 @@
 
         }
         60%{
-          transform: translateY(415px) translateX(108px);
+          transform: translateY(415px) translateX(65px);
 
         }
         70%{
-          transform: translateY(548px) translateX(39px);
+          transform: translateY(548px) translateX(65px);
 
         }
         70%{
@@ -159,7 +174,7 @@
 
         }
         80%{
-          transform: translateY(648px) translateX(65px);
+          transform: translateY(648px) translateX(201px);
 
         }
         90%{
@@ -231,7 +246,7 @@
 
       @keyframes red-v1-to-orange {
          0%{
-          transform: translateY(452px) translateX(281px);
+          transform: translateY(452px) translateX(253px);
 
          }
          10%{
@@ -265,7 +280,7 @@
 
       @keyframes red-v1-to-yellow {
         0%{
-          transform: translateY(454px) translateX(252px);
+          transform: translateY(452px) translateX(253px);
         }      
         10%{
           transform: translateY(452px) translateX(283px);
@@ -308,6 +323,59 @@
 
         }
       }
+
+      
+      @keyframes red-v1-to-blue {
+         0%{
+          transform: translateY(452px) translateX(281px);
+
+         }
+        }
+
+
+      @keyframes red-v1-to-blue {
+        0%{
+          transform: translateY(454px) translateX(252px);
+        }      
+        10%{
+          transform: translateY(452px) translateX(283px);
+
+        }
+        20%{
+          transform: translateY(517px) translateX(292px);
+
+        }
+        30%{
+          transform: translateY(521px) translateX(575px);
+        }
+        40%{
+          transform: translateY(452px) translateX(589px);
+
+        }
+        50%{
+          transform: translateY(266px) translateX(586px);
+        }
+        60%{
+          transform: translateY(265px) translateX(681px);
+
+        }
+        70%{
+          transform: translateY(324px) translateX(687px);
+
+        }
+        80%{
+          transform: translateY(324px) translateX(833px);
+
+        }
+        90%{
+          transform: translateY(235px) translateX(835px);
+
+        }
+        100%{
+          transform: translateY(227px) translateX(745px);
+
+        }
+      }
       
       @-webkit-keyframes shake {
         0%  { -webkit-transform:     translate(2px, 1px) rotate(0deg); }
@@ -332,7 +400,7 @@
 <script>
   const cssMainClass = 'red-v1-to-yellow';
 
-  const classArr = ['red-v1', 'red-v1-to-orange','red-v1-to-yellow']
+  const classArr = ['red-v1', 'red-v1-to-orange','red-v1-to-yellow','red-v1-to-blue']
 
   function paushEvt(){
     let elements = document.querySelectorAll('.molecule')
@@ -351,14 +419,15 @@
     div.appendChild(span);
     console.log(div)
     div.classList.add(`molecule`);
-    div.classList.add(`molecule`+Math.round(Math.random()*4));
+    div.classList.add(`molecule`+Math.round(Math.random()*6));
 
     // div.classList.add(cssMainClass);
 
 
     parentEle.insertAdjacentElement('afterbegin', div);
     div.addEventListener("animationend", (event) => {
-      const selectClass = Math.round(Math.random()*classArr.length)
+      const selectClass = Math.round(Math.random()*(classArr.length-1));
+      console.log(selectClass)
       div.classList.add(classArr[selectClass]);
       div.addEventListener("animationend", (event) => {
         div.style.opacity = 0
@@ -367,7 +436,18 @@
     });
 
   }
-
+  function generateEleGroup(){
+      const moliQuatity = 2;
+      for(let i = 0; i < moliQuatity; i++){
+        addMoliq(i)         
+      }
+      function addMoliq(i) { 
+        setTimeout(function() { 
+          generateEle()
+        }, 200 * i); 
+      } 
+      
+  }
 
 
 
