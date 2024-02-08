@@ -1,0 +1,86 @@
+<!doctype html>
+
+<body>
+    <!-- <h2 onclick="this.classList.toggle('animated')">click me to start / stop</h2> -->
+    <h2 onclick="divOnClick()">click me to start / stop</h2>
+    <div class="cir1">R</div>
+    <div id="eat-me_sprite">eat-me_sprite</div>
+    <style>
+        .cir1 {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(195, 43, 226);
+            border-radius: 50%;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var anim1;
+        function divOnClick(params) {
+            console.log("pkp timechange: ~ divOnClick ~ params:", params)
+            anim1.pause();
+        }
+        /**
+         * https://www.w3.org/TR/web-animations-1/
+         * 
+         * 
+        // In the first frame after the following animation finishes, the callback for
+        // the `finished` promise will run BEFORE style is updated and hence will NOT
+        // flicker.
+        elem.animate({ transform: 'translateY(100px)' }, 200).finished.then(() => {
+          elem.style.transform = 'translateY(100px)';
+        });
+        
+
+        { transform: `translate(${evt.clientX}px, ${evt.clientY}px)` },
+        // transform: translateY(170px) translateX(-210px);
+
+
+                transform: translate(10px, 20px); //translate X by 10px, y by 20px 
+
+        
+         * */
+
+
+
+
+
+        const nommingCake = document
+            .getElementById("eat-me_sprite")
+            .animate(
+                [{ transform: "translate(0px,100px)" }, { transform: "translateY(-80%)" }],
+                {
+                    fill: "forwards",
+                    easing: "steps(140, end)",
+                    duration: 3000,
+                },
+            );
+
+        // doesn't actually need to be eaten until a click event, so pause it initially:
+        // nommingCake.pause();
+        console.log("pkp timechange: ~ nommingCake:", nommingCake)
+
+
+        let el = document.querySelector('.cir1');
+        // anim1 = el.animate({ transform: 'translate(100px,20px)' }, 2000)
+        //     .finished.then((evt) => {
+        //         console.log("pkp timechange: ~ .finished.then ~ evt:", evt)
+        //         // el.style.transform = 'translateY(100px)';
+        //         // el.animate({ transform: 'translateY(100px)' }, 2000)
+        //     });
+
+        anim1 = el.animate([
+            { transform: 'translate(100px,20px)' },
+            { background: '#ff004d', offset: 0 },
+            { background: '#ff77ab', offset: 0.20 },
+            { background: '#00e756', offset: 0.5, },
+            { background: '#29adff', offset: 0.80 },
+            { background: '#ff77ab', offset: 1 }
+        ], {
+            duration: 2000,
+            direction: 'alternate',
+            iterations: Infinity
+        });
+
+    </script>
+</body>
