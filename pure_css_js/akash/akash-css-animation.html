@@ -7,40 +7,69 @@
     <title>Document</title>
 </head>
 <body>
+  <button onclick="paushEvt()">Pause</button>
+  <button onclick="playEvt()">Play</button>
+  <button onclick="generateEleGroup()">Add</button>
     <div id="falling-card-parent">
+      <div id="mydivheader1"> </div>             
+     
+        <!-- <img src="./images/img2.png" width="900px"> -->
         <div id="falling-card" class="box">
-          <div class="molecule"> <span></span> </div>
+          <div id="mydiv">
+            <div id="mydivheader" class=""></div>             
+          </div>
+          <!-- <div class="molecule"> <span></span> </div>
           <div class="molecule molecule2"><span></span></div>
           <div class="molecule molecule3"><span></span></div>
-          <div class="molecule molecule4"><span></span></div>
-
-
+          <div class="molecule molecule4"><span></span></div> -->
         </div>
     </div>
 
 
     <style>
-      .box{
-        
-        position: relative;
-        left: 0;
-        background: url(./images/bg1.png) no-repeat 0 0;
-        background-size: 400px;
-        height: 800px;
-        width: 400px;
+      #mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+  transform: translateX(45%);
 
-      }
+}
 
-      .molecule{
-        
-        
+#mydivheader {
+  /* padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff; */
+        background-color: red;
         width: 20px;
         height: 20px;
         display: inline-block;
         position: absolute;
-        right:5%;
+        left:0;
         top: 0;
-        animation: animDown 7s 2s linear infinite;
+}
+      .box{
+        
+        position: relative;
+        left: 0;
+        background: url(./images/img2.png) no-repeat 0 0;
+        background-size: 900px;
+        height: 800px;
+        width: 900px;
+
+      }
+
+      .molecule{        
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: absolute;
+        left:0;
+        top: 0;
+        animation: animDown 10s 1s linear forwards;
         opacity: 0.5;
       }
       .molecule span{ background: red; 
@@ -50,9 +79,7 @@
         animation: shake 0.5s 0.5s linear infinite; 
       }
 
-
-      .molecule2{
-        
+      .molecule2{        
         animation-delay: 1.8s;
         top: 10px;
         right: 6%;
@@ -68,77 +95,413 @@
         animation-delay: 1.6s;
         right: 4%;
         top: 5px;
-
       }
+      .molecule5{
+        animation-delay: 1.6s;
+        right: 5%;
+        top: 3px;
+      }
+      .molecule6{
+        animation-delay: 1.6s;
+        right: 8%;
+        top: 6px;
+      }
+
+
       .molecule4 span{ background: rgb(255, 0, 64);}
 
+      .green-box{
+        transform: translateY(83px) translateX(391px);
+        animation-name: animDown;
+        animation-delay: 0s!important;
+      }
+      .red-v1{
+        transform: translateY(450px) translateX(-150px);
+        animation-name: red-v1;
+        animation-delay: 0s!important;
+      }
+      .red-v1-to-orange{
+        transform: translateY(452px) translateX(253px);
+        animation-name: red-v1-to-orange;
+        animation-delay: 0s!important;
+      }
 
+      .red-v1-to-yellow{
+        transform: translateY(452px) translateX(281px);
+        animation-name: red-v1-to-yellow;
+        animation-delay: 0s!important;
+      }
+      .red-v1-to-blue{
+        transform: translateY(452px) translateX(281px);
+        animation-name: red-v1-to-blue;
+        animation-delay: 0s!important;
+      }
+
+      
+
+      
       @keyframes animDown {
         0%{
-          transform: translateY(0);
+          transform: translateY(83px) translateX(391px);
         }
         10%{
-          transform: translateY(70px);
+          transform: translateY(96px) translateX(122px);
         }
         20%{
-          transform: translateY(70px) translateX(-200px);
+          transform: translateY(262px) translateX(109px);
         }
         30%{
-          transform: translateY(170px) translateX(-210px);
+          transform: translateY(600px) translateX(83px);
         }
         40%{
-          transform: translateY(270px) translateX(-210px);
+          transform: translateY(600px) translateX(150px);
+
         }
         50%{
-          transform: translateY(300px) translateX(-210px);
+          transform: translateY(456px) translateX(190px);
+
         }
         60%{
-          transform: translateY(330px) translateX(-260px);
+          transform: translateY(415px) translateX(65px);
+
         }
         70%{
-          transform: translateY(500px) translateX(-260px);
+          transform: translateY(548px) translateX(65px);
+
         }
         70%{
-          transform: translateY(500px) translateX(-260px);
+          transform: translateY(631px) translateX(65px);
+
         }
         80%{
-          transform: translateY(500px) translateX(-160px);
+          transform: translateY(648px) translateX(201px);
+
         }
         90%{
-          transform: translateY(360px) translateX(-160px);
+          transform: translateY(454px) translateX(201px);
+
+        }  
+        100%{
+          transform: translateY(454px) translateX(252px);
+
         }         
+      }
+
+      @keyframes red-v1 {  
+        0%{
+          transform: translateY(454px) translateX(252px);
+        }      
+        10%{
+          transform: translateY(452px) translateX(283px);
+
+        }
+        20%{
+          transform: translateY(517px) translateX(292px);
+
+        }
+        40%{
+          transform: translateY(521px) translateX(575px);
+
+
+        }
+        60%{
+          transform: translateY(229px) translateX(583px);
+
+
+        }
+        80%{
+          transform: translateY(225px) translateX(292px);
+
+        }
+        90%{
+          transform: translateY(509px) translateX(289px);
+
+        }
+        100%{
+          transform: translateY(539px) translateX(434px);
+
+        }
+        /* 0%{
+          transform: translateY(450px) translateX(-150px);
+        }  
+        10%{
+          transform: translateY(510px) translateX(-112px);
+        } 
+        25%{
+          transform: translateY(307px) translateX(520px);
+        }   
+        50%{
+          transform: translateY(577px) translateX(520px);
+
+        }   
+        75%{
+          transform: translateY(582px) translateX(235px);
+
+        }
+        100%{
+          transform: translateY(302px) translateX(226px);
+
+        }          */
+      }
+
+      @keyframes red-v1-to-orange {
+         0%{
+          transform: translateY(452px) translateX(253px);
+
+         }
+         10%{
+          transform: translateY(509px) translateX(285px);
+
+         }
+         20%{
+          transform: translateY(521px) translateX(430px);
+
+         }
+        30%{
+          transform: translateY(608px) translateX(435px);
+        }
+        60%{
+          transform: translateY(669px) translateX(298px);
+
+        }
+        80%{
+          transform: translateY(681px) translateX(565px);
+
+        }
+        90%{
+          transform: translateY(625px) translateX(573px);
+
+        }
+        100%{
+          transform: translateY(650px) translateX(422px);
+
+        }
+      }  
+
+      @keyframes red-v1-to-yellow {
+        0%{
+          transform: translateY(452px) translateX(253px);
+        }      
+        10%{
+          transform: translateY(452px) translateX(283px);
+
+        }
+        20%{
+          transform: translateY(517px) translateX(292px);
+
+        }
+        40%{
+          transform: translateY(521px) translateX(575px);
+        }
+        50%{
+          transform: translateY(452px) translateX(589px);
+
+        }
+        70%{
+          transform: translateY(453px) translateX(842px);
+
+        }
+        80%{
+          transform: translateY(636px) translateX(841px);
+
+        }
+        85%{
+          transform: translateY(630px) translateX(694px);
+
+        }
+        90%{
+          transform: translateY(520px) translateX(690px);
+
+        }
+        93%{
+          transform: translateY(440px) translateX(687px);
+
+        }
+        100%{
+          transform: translateY(446px) translateX(830px);
+
+
+        }
+      }
+
+      
+      @keyframes red-v1-to-blue {
+         0%{
+          transform: translateY(452px) translateX(281px);
+
+         }
+        }
+
+
+      @keyframes red-v1-to-blue {
+        0%{
+          transform: translateY(454px) translateX(252px);
+        }      
+        10%{
+          transform: translateY(452px) translateX(283px);
+
+        }
+        20%{
+          transform: translateY(517px) translateX(292px);
+
+        }
+        30%{
+          transform: translateY(521px) translateX(575px);
+        }
+        40%{
+          transform: translateY(452px) translateX(589px);
+
+        }
+        50%{
+          transform: translateY(266px) translateX(586px);
+        }
+        60%{
+          transform: translateY(265px) translateX(681px);
+
+        }
+        70%{
+          transform: translateY(324px) translateX(687px);
+
+        }
+        80%{
+          transform: translateY(324px) translateX(833px);
+
+        }
+        90%{
+          transform: translateY(235px) translateX(835px);
+
+        }
+        100%{
+          transform: translateY(227px) translateX(745px);
+
+        }
       }
       
       @-webkit-keyframes shake {
-  0%  { -webkit-transform:     translate(2px, 1px) rotate(0deg); }
-  10% { -webkit-transform:     translate(-1px, -2px) rotate(-2deg); }
-  20% { -webkit-transform:     translate(-3px, 0px) rotate(3deg); }
-  30% { -webkit-transform:     translate(0px, 2px) rotate(0deg); }
-  40% { -webkit-transform:     translate(1px, -1px) rotate(1deg); }
-  50% { -webkit-transform:     translate(-1px, 2px) rotate(-1deg); }
-  60% { -webkit-transform:     translate(-3px, 1px) rotate(0deg); }
-  70% { -webkit-transform:     translate(2px, 1px) rotate(-2deg); }
-  80% { -webkit-transform:     translate(-1px, -1px) rotate(4deg); }
-  90% { -webkit-transform:     translate(2px, 2px) rotate(0deg); }
-  100%{ -webkit-transform:     translate(1px, -2px) rotate(-1deg); }
- }
+        0%  { -webkit-transform:     translate(2px, 1px) rotate(0deg); }
+        10% { -webkit-transform:     translate(-1px, -2px) rotate(-2deg); }
+        20% { -webkit-transform:     translate(-3px, 0px) rotate(3deg); }
+        30% { -webkit-transform:     translate(0px, 2px) rotate(0deg); }
+        40% { -webkit-transform:     translate(1px, -1px) rotate(1deg); }
+        50% { -webkit-transform:     translate(-1px, 2px) rotate(-1deg); }
+        60% { -webkit-transform:     translate(-3px, 1px) rotate(0deg); }
+        70% { -webkit-transform:     translate(2px, 1px) rotate(-2deg); }
+        80% { -webkit-transform:     translate(-1px, -1px) rotate(4deg); }
+        90% { -webkit-transform:     translate(2px, 2px) rotate(0deg); }
+        100%{ -webkit-transform:     translate(1px, -2px) rotate(-1deg); }
+      }
     
-
-       
-
-      
-
-
-
-
-
-
 
 
 
     </style>
 
 
+<script>
+  const cssMainClass = 'red-v1-to-yellow';
+
+  const classArr = ['red-v1', 'red-v1-to-orange','red-v1-to-yellow','red-v1-to-blue']
+
+  function paushEvt(){
+    let elements = document.querySelectorAll('.molecule')
+    elements.forEach((elv) => elv.style.animationPlayState = 'paused')
+  }
+  function playEvt(){
+    let elements = document.querySelectorAll('.molecule')
+
+    elements.forEach((elv) => elv.style.animationPlayState = 'running')
+  }
+  const parentEle = document.querySelector('.box')
+
+  const generateEle = function(){
+    const div = document.createElement('div');
+    const span = document.createElement('span');
+    div.appendChild(span);
+    console.log(div)
+    div.classList.add(`molecule`);
+    div.classList.add(`molecule`+Math.round(Math.random()*6));
+
+    // div.classList.add(cssMainClass);
+
+
+    parentEle.insertAdjacentElement('afterbegin', div);
+    div.addEventListener("animationend", (event) => {
+      const selectClass = Math.round(Math.random()*(classArr.length-1));
+      console.log(selectClass)
+      div.classList.add(classArr[selectClass]);
+      div.addEventListener("animationend", (event) => {
+        div.style.opacity = 0
+      })
+      console.log(event)
+    });
+
+  }
+  function generateEleGroup(){
+      const moliQuatity = 2;
+      for(let i = 0; i < moliQuatity; i++){
+        addMoliq(i)         
+      }
+      function addMoliq(i) { 
+        setTimeout(function() { 
+          generateEle()
+        }, 200 * i); 
+      } 
+      
+  }
+
+
+
+  // Drag 
+
+  dragElement(document.getElementById("mydiv"));
+const mydivheader = document.getElementById('mydivheader')
+const mydivheader1 = document.getElementById('mydivheader1')
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    
+    mydivheader1.innerHTML = `transform: translateY(${elmnt.style.top}) translateX(${elmnt.style.left});`
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+
+
+</script>
 </body>
 
 </html>

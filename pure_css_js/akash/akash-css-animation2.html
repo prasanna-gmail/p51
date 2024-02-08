@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="falling-card-parent">
+        <div id="falling-card" class="box">
+          <div class="molecule"> <span></span> </div>
+          <div class="molecule molecule2"><span></span></div>
+          <div class="molecule molecule3"><span></span></div>
+          <div class="molecule molecule4"><span></span></div>
+        </div>
+    </div>
+
+
+    <style>
+      .box{
+        
+        position: relative;
+        left: 0;
+        background: url(./images/bg1.png) no-repeat 0 0;
+        background-size: 400px;
+        height: 800px;
+        width: 400px;
+
+      }
+
+      .molecule{
+        
+        
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: absolute;
+        right:5%;
+        top: 0;
+        animation: animDown 7s 2s linear infinite;
+        opacity: 0.5;
+      }
+      .molecule span{ background: red; 
+        width: 100%; height: 100%; 
+        display: block; 
+        border-radius: 50%;
+        animation: shake 0.5s 0.5s linear infinite; 
+      }
+
+
+      .molecule2{
+        
+        animation-delay: 1.8s;
+        top: 10px;
+        right: 6%;
+      }
+      .molecule2 span{ background: yellow;}
+      
+      .molecule3{
+        animation-delay: 2.2s;
+        right: 3%;
+      }
+      .molecule3 span{ background: blue;}
+      .molecule4{
+        animation-delay: 1.6s;
+        right: 4%;
+        top: 5px;
+
+      }
+      .molecule4 span{ background: rgb(255, 0, 64);}
+
+
+      @keyframes animDown {
+        0%{
+          transform: translateY(0);
+        }
+        10%{
+          transform: translateY(70px);
+        }
+        20%{
+          transform: translateY(70px) translateX(-200px);
+        }
+        30%{
+          transform: translateY(170px) translateX(-210px);
+        }
+        40%{
+          transform: translateY(270px) translateX(-210px);
+        }
+        50%{
+          transform: translateY(300px) translateX(-210px);
+        }
+        60%{
+          transform: translateY(330px) translateX(-260px);
+        }
+        70%{
+          transform: translateY(500px) translateX(-260px);
+        }
+        70%{
+          transform: translateY(500px) translateX(-260px);
+        }
+        80%{
+          transform: translateY(500px) translateX(-160px);
+        }
+        90%{
+          transform: translateY(360px) translateX(-160px);
+        }         
+      }
+      
+      @-webkit-keyframes shake {
+  0%  { -webkit-transform:     translate(2px, 1px) rotate(0deg); }
+  10% { -webkit-transform:     translate(-1px, -2px) rotate(-2deg); }
+  20% { -webkit-transform:     translate(-3px, 0px) rotate(3deg); }
+  30% { -webkit-transform:     translate(0px, 2px) rotate(0deg); }
+  40% { -webkit-transform:     translate(1px, -1px) rotate(1deg); }
+  50% { -webkit-transform:     translate(-1px, 2px) rotate(-1deg); }
+  60% { -webkit-transform:     translate(-3px, 1px) rotate(0deg); }
+  70% { -webkit-transform:     translate(2px, 1px) rotate(-2deg); }
+  80% { -webkit-transform:     translate(-1px, -1px) rotate(4deg); }
+  90% { -webkit-transform:     translate(2px, 2px) rotate(0deg); }
+  100%{ -webkit-transform:     translate(1px, -2px) rotate(-1deg); }
+ }
+ canvas {
+        border: 1px solid black;
+        display: block;
+        margin: 20px auto;
+    }
+  
+    </style>
+
+<canvas id="canvas"></canvas>
+
+<script>
+    // Get the canvas element and its context
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Define molecule properties
+    const moleculeCount = 10;
+    const molecules = [];
+
+    class Molecule {
+        constructor(x, y, radius, color, velocity) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+            this.velocity = velocity;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+
+        update() {
+            this.draw();
+
+            // Move the molecule
+            this.x += this.velocity.x++;
+            this.y += this.velocity.y++;
+
+            // Bounce off the walls
+            if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+                // this.velocity.x = -this.velocity.x;
+            }
+
+            if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+                // this.velocity.y = -this.velocity.y;
+            }
+        }
+    }
+
+    // Create molecules
+    for (let i = 0; i < moleculeCount; i++) {
+        const radius = Math.random() * 20 + 10;
+        const x = 2 + radius;
+        const y = 2 + radius;
+        const color = `hsl(${Math.random() * 360}, 50%, 50%)`;
+        const velocity = {
+            x: 0,
+            y: 1
+        };
+
+        molecules.push(new Molecule(x, y, radius, color, velocity));
+    }
+
+    // Animation loop
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        molecules.forEach(molecule => {
+            molecule.update();
+        });
+    }
+
+    animate();
+</script>
+</body>
+</html>
+
+
+</body>
+
+</html>
