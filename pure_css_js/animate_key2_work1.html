@@ -1,0 +1,42 @@
+<!doctype html>
+
+<body>
+    <!-- <h2 onclick="this.classList.toggle('animated')">click me to start / stop</h2> -->
+    <span onclick="playOnClick()">play</span> &nbsp;
+    <span onclick="pauseOnClick()">pause</span>
+    <div class="cir1">R</div>
+    <style>
+        .cir1 {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(195, 43, 226);
+            border-radius: 50%;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var anim1;
+        function playOnClick(params) {
+            anim1.play();
+        }
+        function pauseOnClick(params) {
+            anim1.pause();
+        }
+
+        let el = document.querySelector('.cir1');
+
+        anim1 = el.animate([
+            { transform: 'translate(0px,0px)', background: '#ff0040', offset: 0 },
+            { transform: 'translate(10px,40px)', background: '#ff004d', offset: 0.10 },
+            { transform: 'translate(40px,60px)', background: '#ff77ab', offset: 0.20 },
+            { transform: 'translate(80px,80px)', background: '#00e756', offset: 0.50, },
+            { transform: 'translate(90px,140px)', background: '#29adff', offset: 0.80 },
+            { transform: 'translate(100px,240px)', background: '#ff77ab', offset: 1 }
+        ], {
+            duration: 2000,
+            direction: 'alternate',
+            iterations: Infinity
+        });
+
+    </script>
+</body>
