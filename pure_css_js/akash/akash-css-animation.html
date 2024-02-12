@@ -51,17 +51,16 @@
         left:0;
         top: 0;
 }
-      .box{
-        
+      .box{      
         position: relative;
         left: 0;
         background: url(./images/img2.png) no-repeat 0 0;
         background-size: 900px;
         height: 800px;
         width: 900px;
-
       }
-
+      .puase-animation .molecule{ animation-play-state: paused!important; }
+      .play-animation .molecule{ animation-play-state: running!important; }
       .molecule{        
         width: 20px;
         height: 20px;
@@ -392,26 +391,24 @@
       }
     
 
-
-
     </style>
 
 
 <script>
   const cssMainClass = 'red-v1-to-yellow';
-
   const classArr = ['red-v1', 'red-v1-to-orange','red-v1-to-yellow','red-v1-to-blue']
+  const parentEle = document.querySelector('.box')
 
   function paushEvt(){
     let elements = document.querySelectorAll('.molecule')
-    elements.forEach((elv) => elv.style.animationPlayState = 'paused')
+    parentEle.classList.remove('play-animation')
+    parentEle.classList.add('puase-animation')
   }
   function playEvt(){
     let elements = document.querySelectorAll('.molecule')
-
-    elements.forEach((elv) => elv.style.animationPlayState = 'running')
+    parentEle.classList.remove('puase-animation')
+    parentEle.classList.add('play-animation')
   }
-  const parentEle = document.querySelector('.box')
 
   const generateEle = function(){
     const div = document.createElement('div');
@@ -420,7 +417,6 @@
     console.log(div)
     div.classList.add(`molecule`);
     div.classList.add(`molecule`+Math.round(Math.random()*6));
-
     // div.classList.add(cssMainClass);
 
 
