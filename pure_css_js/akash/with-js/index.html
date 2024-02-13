@@ -252,24 +252,69 @@ class Anim{
 
   bulueBox = function(stage){
     console.log('stage',stage.stage)
-    this.animEle.add({translateY:116,translateX:113})
-    .add({translateY:209,translateX:111})
-    .add({translateY:220,translateX:43})
-    .add({translateY:291,translateX:35})
-    .add({translateY:301,translateX:177})
-    .add({translateY:208,translateX:186})
-    .add({translateY:329,translateX:111})
-    .add({translateY:396,translateX:114})
-    .add({translateY:405,translateX:36})
-    .add({translateY:662,translateX:35})
-    .add({translateY:665,translateX:183})
-    .add({translateY:457,translateX:185})
-    .add({translateY:449,translateX:274})
-    .add({translateY:511,translateX:293})
-    .add({translateY:512,translateX:578})
-    .add({translateY:238,translateX:583})
-    .add({translateY:226,translateX:300})
-    .add({translateY:454,translateX:281})
+    this.animEle
+    .add({translateY:82,translateX:390})
+    .add({translateY:85,translateX:125})
+    .add({translateY:202,translateX:105})
+    .add({
+      
+      translateX:stage.stage === 2 ? 180 : 32, 
+    })
+    .add({
+      delay: 5,
+      translateY:stage.stage === 2 ? 204 : 204,
+      // translateY:204,
+      translateX:stage.stage === 2 ? 32 : 32, 
+
+      
+      begin: (anim) => { 
+        console.log(anim)
+      }})
+    .add({translateY:300,translateX:29})
+    .add({translateY:304,translateX:191})
+    .add({translateY:197,translateX:189})
+    .add({translateY:199,translateX:111})
+    .add({translateY:405,translateX:111})
+    .add({translateY:409,translateX:26})
+    .add({translateY:678,translateX:22})
+    .add({translateY:677,translateX:192})
+    .add({translateY:402,translateX:195})
+    .add({translateY:400,translateX:110})
+    .add({translateY:461,translateX:110})
+    .add({translateY:458,translateX:280})
+    .add({translateY:518,translateX:298})
+    .add({translateY:529,translateX:435})
+    .add({translateY:618,translateX:433})
+    .add({translateY:622,translateX:287})
+    .add({translateY:683,translateX:286})
+    .add({translateY:682,translateX:579})
+    .add({translateY:618,translateX:578})
+    .add({translateY:617,translateX:436})
+    .add({translateY:527,translateX:437})
+    .add({translateY:520,translateX:573})
+    .add({translateY:454,translateX:589})
+    .add({translateY:455,translateX:845})
+    .add({translateY:674,translateX:843})
+    .add({translateY:678,translateX:684})
+    .add({translateY:451,translateX:678})
+    .add({translateY:451,translateX:586})
+    .add({translateY:274,translateX:590})
+    .add({translateY:270,translateX:676})
+    .add({translateY:209,translateX:677})
+    .add({translateY:208,translateX:843})
+    .add({translateY:335,translateX:848})
+    .add({translateY:337,translateX:678})
+    .add({translateY:263,translateX:673})
+    .add({translateY:270,translateX:585})
+    .add({translateY:219,translateX:575})
+    .add({translateY:208,translateX:368})
+    .add({translateY:324,translateX:364})
+    .add({translateY:327,translateX:506})
+    .add({translateY:214,translateX:509})
+    .add({translateY:228,translateX:298})
+    .add({translateY:252,translateX:283})
+    .add({translateY:453,translateX:278})
+    .add({translateY:452,translateX:237})
 
 
 
