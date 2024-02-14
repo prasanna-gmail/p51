@@ -1,31 +1,79 @@
-// var myMolProtien = anime({
-//   targets: ['.anim'],
-//   translateX: '3rem',
-//   rotate: 180,
-//   borderRadius: '8px',
-//   duration: 10000,
-//   autoplay: true,
-//   loop: true
-// });
-let pk = [
-  { translateY: -40, duration: 1000 },
-  { translateY: -60, duration: 1000 },
-  { translateX: 15, duration: 1000, delay: 100 },
-  { translateY: 20, duration: 1000, easing: 'easeInOutCirc' },
-  { translateY: 120, duration: 1000 },
-  { translateY: 110, duration: 1000, easing: 'easeInOutCubic' },
-  { translateY: 145, duration: 1000, delay: 100 },
-  { translateX: 0, duration: 1000 },
-  { translateY: 0, duration: 1000 }
-]
-var myMolProtien2 = anime({
-  targets: ['.anim'],
-  keyframes: pk,
-  duration: 1000,
-  easing: 'easeOutElastic(1, .8)',
-  autoplay: true,
-  loop: true
-});
-// myMolProtien2.pause();
-// myMolProtien.pause()
+// https://www.w3schools.com/jsref/jsref_class_extends.asp
 
+class Animation {
+  constructor(type) {
+    this.type = type;
+  }
+  play() {
+    return 'I animating ' + this.carname;
+  }
+}
+class Molecule {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  animate() {
+    return 'I animating ' + this.carname;
+  }
+}
+
+
+class Protein extends Molecule {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  animate() {
+    myProtAnimation.play();
+  }
+  show() {
+    return this.animate() + ', it is a ' + this.model;
+  }
+}
+// var myProtAnimation = new Animation("Protien")
+var myProtAnimation = {}
+function createMolecule() {
+
+  // Create element:
+  const element = document.createElement("div");
+  element.innerHTML = "This ";
+  // Append to another element:
+  document.querySelector(".holder").appendChild(element);
+
+  element.classList.add("anim");
+  element.classList.add("red");
+
+
+  myProtAnimation = anime({
+    targets: ['.anim'],
+    keyframes: pk,
+    duration: 1000,
+    easing: 'easeOutElastic(1, .8)',
+    autoplay: false,
+    loop: true
+  });
+
+
+}
+
+
+function removeAnimations(callee) {
+  const runningAnims = anime.running;
+  while (runningAnims.length > 0) { runningAnims.pop(); }
+}
+// var myProtein = new Protein("Ford", "Mustang");
+// console.log("pkp timechange: ~  myProtein.show():", myProtein.show())
+
+let cBtn = document.querySelector('.create')
+cBtn.onclick = function (ev) {
+  console.log("pkp timechange: ~ ev:", ev)
+  // myProtein.animate();
+  createMolecule()
+
+}
+document.querySelector('.play').onclick = function (params) {
+  myProtAnimation.play()
+};
+document.querySelector('.pause').onclick = function (params) {
+  myProtAnimation.pause()
+};
