@@ -12,6 +12,16 @@
 ## food flow desc
 - https://www.numerade.com/ask/question/show-how-energy-is-released-to-make-growth-and-repair-occur-in-a-healthy-functioning-cell-tell-me-where-the-molecules-go-and-i-will-give-brainiest-help-fast-molecules-water-fiber-amino-acid--31818/
 
+## url sim1
+
+- https://go.info.amplify.com/fy19_science_edreports_national_requestsample_gito-sample_getintouchoption_thank-you?submissionGuid=1178b7f7-8d7e-4966-876f-7fccf8ddcd56
+- https://learning.amplify.com/metabolism/post-launch_84.html
+
+
+http://learning.amplify.com/science?_gl=1*u6x2d5*_ga*MTIyMTY1OTUyOS4xNzAzNTk2MTY4*_ga_KB37BKPPF6*MTcwNzg5NTY0Ni4xMS4xLjE3MDc4OTU5OTQuNDcuMC4w
+
+- https://learning.amplify.com/curriculum/
+
 
 
 ## food
