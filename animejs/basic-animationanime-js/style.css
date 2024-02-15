@@ -1,0 +1,25 @@
+articlex {
+  display: flex;
+  /* flex-direction: row; */
+  position: relative;
+  width: 100%;
+  min-height: 8rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+}
+
+.red {
+  background-color: #FF324A;
+}
+
+.green {
+  background-color: #31FFA6;
+}
+
+.blue {
+  background-color: #0a234f;
+}
+
+.yellow {
+  background-color: #FFFF99;
+}

@@ -1,0 +1,42 @@
+div {
+    width: 2rem;
+    height: 2rem;
+    margin: .5rem;
+}
+
+html,
+body {
+    background: #18212D;
+}
+
+
+articlex {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    min-height: 8rem;
+    min-width: 8rem;
+    margin: 3rem;
+    padding: 2rem;
+}
+
+.anim {
+    position: absolute;
+}
+
+.red {
+    background-color: #FF324A;
+}
+
+.green {
+    background-color: #31FFA6;
+}
+
+.blue {
+    background-color: #206EFF;
+}
+
+.yellow {
+    background-color: #FFFF99;
+}
