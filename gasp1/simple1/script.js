@@ -9,12 +9,19 @@ let tls = []
 
 btn.addEventListener("click", createMolecule);
 
+var tl = gsap.timeline();
+
 function createMolecule(molName, counts) {
 
     var target = document.createElement("div");
+    var target2 = document.createElement("div");
     target.classList.add("anim");
     target.classList.add("protein");
+    target2.classList.add("anim");
+    target2.classList.add("amino");
     document.body.appendChild(target);
+    document.body.appendChild(target2);
+
 
     setTimeout(() => {
         let tw1 = gsap.to(target, {
@@ -27,28 +34,32 @@ function createMolecule(molName, counts) {
                 return pointsArr[repeatCountY].y
             },
             repeat: pointsArr.length - 1,
-            repeatRefresh: true
+            repeatRefresh: true,
+            duration: 2
         })
+
+        let tw2 = gsap.to(target2, {
+            x: function (ctr) {
+                var repeatCountX2 = Math.floor(tw2.totalTime() / (tw2.duration() + tw2.repeatDelay()));
+                return pointsArr[repeatCountX2].x
+            },
+            y: function (ctr) {
+                var repeatCountY2 = Math.floor(tw2.totalTime() / (tw2.duration() + tw2.repeatDelay()));
+                return pointsArr[repeatCountY2].y
+            },
+            repeat: pointsArr.length - 1,
+            repeatRefresh: true,
+            duration: 2
+        })
+
+        tl.add(tw2, "<+=1");
+
+
     }, 500);
+    // tl.add(tween);
 }
-function createMolecule2(molName, counts) {
-
-    /**
-     * create div element and add to dom
-     * and add class to it
-     * animate it
-     */
-    console.log("pkp timechange: ~ createMolecule ~ molName:", molName)
-
-    var tl = gsap.timeline({ defaults: { duration: 1, ease: "" } });
-    tl.to(".class1", { x: "50vw", y: 200 }) //child tweens will inherit the duration and from the parent timeline!
-        .to(".class2", { x: "25vw", y: 200 })
-        .to(".class3", { x: "80vw", y: 200, rotation: -180 });
-
-    tls.push(tl)
 
 
-}
 // GSDevTools.create();
 
 
