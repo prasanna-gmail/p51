@@ -10,10 +10,6 @@ img {
     position: absolute;
 }
 
-.btns {
-    bottom: 10px;
-    position: absolute;
-}
 
 div.anim.amino {
     background-color: rgb(191, 191, 32);
@@ -23,6 +19,23 @@ div.anim.amino {
 div.anim.protein {
     background-color: rgb(194, 34, 164);
     border-radius: 5px;
+}
+
+div.anim.fiber {
+    background-color: rgb(20, 197, 156);
+    border-radius: 2px;
+    rotate: 20;
+}
+
+div.btns {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    bottom: 10px;
+}
+
+.btn {
+    background-color: rgb(155, 212, 22);
 }
 
 /**
