@@ -9,55 +9,117 @@ let tls = []
 
 btn.addEventListener("click", createMolecule);
 
-var tl = gsap.timeline();
+var tl = gsap.timeline(
+    // { paused: true, autoRemoveChildren: true }
+);
+let animClass = "anim"
+let dur = 2
+function onTimelineComplete(params) {
+    console.log("pkp timechange: ~ onTimelineComplete ~ params:", params)
+    if (params) {
+        console.log("pkp timechange: ~ onTimelineComplete ~ params:", params)
+        // params.parentNode.removeChild(params)
+        // document.removeChild(params)
+    } else {
+        // console.log("pkp timechange: ~ onTimelineComplete ~ else:", params)
 
+    }
+}
 function createMolecule(molName, counts) {
 
     var target = document.createElement("div");
-    var target2 = document.createElement("div");
-    target.classList.add("anim");
+    target.classList.add(animClass);
     target.classList.add("protein");
-    target2.classList.add("anim");
-    target2.classList.add("amino");
     document.body.appendChild(target);
+
+    var target2 = document.createElement("div");
+    target2.classList.add(animClass);
+    target2.classList.add("amino");
     document.body.appendChild(target2);
 
-
-    setTimeout(() => {
-        let tw1 = gsap.to(target, {
-            x: function (ctr) {
-                var repeatCount = Math.floor(tw1.totalTime() / (tw1.duration() + tw1.repeatDelay()));
-                return pointsArr[repeatCount].x
-            },
-            y: function (ctr) {
-                var repeatCountY = Math.floor(tw1.totalTime() / (tw1.duration() + tw1.repeatDelay()));
-                return pointsArr[repeatCountY].y
-            },
-            repeat: pointsArr.length - 1,
-            repeatRefresh: true,
-            duration: 2
-        })
-
-        let tw2 = gsap.to(target2, {
-            x: function (ctr) {
-                var repeatCountX2 = Math.floor(tw2.totalTime() / (tw2.duration() + tw2.repeatDelay()));
-                return pointsArr[repeatCountX2].x
-            },
-            y: function (ctr) {
-                var repeatCountY2 = Math.floor(tw2.totalTime() / (tw2.duration() + tw2.repeatDelay()));
-                return pointsArr[repeatCountY2].y
-            },
-            repeat: pointsArr.length - 1,
-            repeatRefresh: true,
-            duration: 2
-        })
-
-        tl.add(tw2, "<+=1");
+    var target3 = document.createElement("div");
+    target3.classList.add(animClass);
+    target3.classList.add("fiber");
+    document.body.appendChild(target3);
 
 
-    }, 500);
+
+    let tw1 = gsap.to(target, {
+        x: function (ctr) {
+            var repeatCount = Math.floor(tw1.totalTime() / (tw1.duration() + tw1.repeatDelay()));
+            return pointsArr[repeatCount].x
+        }
+        , y: function (ctr) {
+            var repeatCountY = Math.floor(tw1.totalTime() / (tw1.duration() + tw1.repeatDelay()));
+            return pointsArr[repeatCountY].y
+        }
+        , repeat: pointsArr.length - 1
+        , repeatRefresh: true
+        , duration: dur
+        , onComplete: onTimelineComplete
+    })
+
+    // tw1.to(target, { x: 0 })
+    let tw2 = gsap.to(target2, {
+        x: function (ctr) {
+            var repeatCountX2 = Math.floor(tw2.totalTime() / (tw2.duration() + tw2.repeatDelay()));
+            return pointsArr[repeatCountX2].x
+        }
+        , y: function (ctr) {
+            var repeatCountY2 = Math.floor(tw2.totalTime() / (tw2.duration() + tw2.repeatDelay()));
+            return pointsArr[repeatCountY2].y
+        }
+        , repeat: pointsArr.length - 1
+        , repeatRefresh: true
+        , duration: dur
+        , onComplete: onTimelineComplete
+    })
+    let tw3 = gsap.to(target3, {
+        x: function (ctr) {
+            var repeatCountX3 = Math.floor(tw3.totalTime() / (tw3.duration() + tw3.repeatDelay()));
+            return pointsArr[repeatCountX3].x
+        }
+        , y: function (ctr) {
+            var repeatCountY3 = Math.floor(tw3.totalTime() / (tw3.duration() + tw3.repeatDelay()));
+            return pointsArr[repeatCountY3].y
+        }
+        , repeat: pointsArr.length - 1
+        , repeatRefresh: true
+        , duration: dur
+        , onComplete: onTimelineComplete
+
+    })
+    // tw.delay(0.1);
+    tw2.delay(0.1);
+    tw3.delay(0.2);
+
+    // tl.add(tw2, "<+=1");
     // tl.add(tween);
+
+
 }
+
+var animation = new TimelineLite()
+animation
+    .to('#d1', 1, { x: 370, y: 0 })
+    .to('#d1', 1, { x: 370, y: 85 })
+    .to('#d1', 1, { x: 129, y: 89 })
+    .to('#d1', 1, { x: 120, y: 99 })
+    .to('#d1', 1, { x: 99, y: 160 })
+    .to('#d1', 1, { x: 99, y: 198 })
+    .to('#d1', 1, { x: 90, y: 211 })
+    .to('#d1', 1, { x: 111, y: 221 })
+    .to('#d1', 1, { x: 121, y: 241 })
+    .to('#d1', 1, { x: 121, y: 241 })
+    .to('#d1', 1, { x: 81, y: 241 })
+    .to('#d1', 1, { x: 90, y: 281 })
+    .to('#d1', 1, { x: 104, y: 281 })
+    .to('#d1', 1, { x: 109, y: 381 })
+    .to('#d1', 1, { x: 100, y: 391 })
+    .to('#d1', 1, { x: 130, y: 399 })
+    .to('#d2', 3, { opacity: 0 });
+
+// setTimeout(() => { }, 500);
 
 
 // GSDevTools.create();
