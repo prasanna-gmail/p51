@@ -31,7 +31,7 @@ class Protein extends Molecule {
   }
 }
 // var myProtAnimation = new Animation("Protien")
-var myProtAnimation = {}
+var myAnims = [];
 function createMolecule() {
 
   // Create element:
@@ -39,19 +39,22 @@ function createMolecule() {
   element.innerHTML = "This ";
   // Append to another element:
   document.querySelector(".holder").appendChild(element);
-
+  var t = Math.round(Math.random(100) * 100)
+  console.log("pkp timechange: ~ createMolecule ~ t:" + t)
+  element.style.position.x = t + "px"
   element.classList.add("anim");
   element.classList.add("red");
 
 
-  myProtAnimation = anime({
+  var myProtAnimation = anime({
     targets: ['.anim'],
     keyframes: pk,
     duration: 1000,
     easing: 'easeOutElastic(1, .8)',
-    autoplay: false,
+    autoplay: true,
     loop: true
   });
+  myAnims.push(myProtAnimation)
 
 
 }
@@ -67,7 +70,6 @@ function removeAnimations(callee) {
 let cBtn = document.querySelector('.create')
 cBtn.onclick = function (ev) {
   console.log("pkp timechange: ~ ev:", ev)
-  // myProtein.animate();
   createMolecule()
 
 }

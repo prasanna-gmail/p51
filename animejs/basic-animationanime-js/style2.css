@@ -21,6 +21,10 @@ articlex {
     padding: 2rem;
 }
 
+.anim {
+    position: absolute;
+}
+
 .red {
     background-color: #FF324A;
 }
