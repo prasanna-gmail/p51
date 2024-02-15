@@ -1,11 +1,14 @@
-body, html {
+body,
+html {
   padding: 0;
   margin: 0
 }
+
 body {
   height: 100vh;
   overflow: hidden;
 }
+
 #motionPath {
   overflow: visible;
   height: 100%;

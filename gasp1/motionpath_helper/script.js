@@ -1,10 +1,10 @@
 //register the plugin (just once)
 gsap.registerPlugin(MotionPathPlugin);
 
-gsap.set(".astronaut", {scale: 0.5, autoAlpha: 1});
+gsap.set(".astronaut", { scale: 0.5, autoAlpha: 1 });
 
 gsap.to(".astronaut", {
-  duration: 5, 
+  duration: 5,
   ease: "power1.inOut",
   immediateRender: true,
   motionPath: {
