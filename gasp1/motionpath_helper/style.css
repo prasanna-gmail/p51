@@ -9,6 +9,12 @@ body {
   overflow: hidden;
 }
 
+div {
+  width: 20px;
+  height: 20px;
+  background-color: bisque;
+}
+
 #motionPath {
   overflow: visible;
   height: 100%;
@@ -18,7 +24,11 @@ body {
 #motionPath path {
   stroke-width: 2;
   stroke: gray;
+
 }
+
+
+
 
 #motionPath .astronaut {
   visibility: hidden;

@@ -17,6 +17,7 @@ const anim = gsap.timeline({ delay: 0.75 });
 // make a bunch of rectangles to put on the 14 paths
 for (let i = 0; i < paths.length; i++) {
   let pathPoints = MotionPathPlugin.getRawPath(paths[i])[0];
+  console.log("pkp timechange: ~ pathPoints:", pathPoints)
   let pathLength = MotionPathPlugin.getLength(paths[i]);
   let count = Math.floor(pathLength / size * fillFactor);
   let newX = pathPoints[0];
@@ -36,7 +37,7 @@ for (let i = 0; i < paths.length; i++) {
         y: 0,
         width: size,
         height: size
-        }
+      }
     });
     localTargets.push(newRect);
     targets.push(newRect);

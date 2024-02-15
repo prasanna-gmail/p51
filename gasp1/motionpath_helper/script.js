@@ -16,3 +16,9 @@ gsap.to(".astronaut", {
 });
 
 MotionPathHelper.create(".astronaut");
+
+
+// var tl = gsap.timeline({ defaults: { duration: 1, ease: "elastic" } });
+// tl.to(".class1", { x: "50vw" }) //child tweens will inherit the duration and from the parent timeline!
+//   .to(".class2", { x: "25vw" })
+//   .to(".class3", { x: "80vw", rotation: -180 });
