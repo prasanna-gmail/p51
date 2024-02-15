@@ -1,10 +1,30 @@
-div {
+div.anim {
     width: 20px;
     height: 20px;
     background-color: bisque;
     position: absolute;
+    border-radius: 20px;
 }
 
 img {
     position: absolute;
 }
+
+.btns {
+    bottom: 10px;
+    position: absolute;
+}
+
+div.anim.amino {
+    background-color: rgb(191, 191, 32);
+    border-radius: 10px;
+}
+
+div.anim.protein {
+    background-color: rgb(194, 34, 164);
+    border-radius: 5px;
+}
+
+/**
+protein,amino acid,fiber,starch,glucose,oxygen,carbon dioxide,water 
+*/
