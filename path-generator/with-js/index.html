@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+
+  <button onclick="paushEvt()">Pause</button>
+  <button onclick="playEvt()">Play</button>
+  <button onclick="generateEleGroup()">Add</button>
+    <div id="falling-card-parent">
+      <div id="mydivheader1"> </div>             
+     
+        <!-- <img src="./images/img2.png" width="900px"> -->
+        <div id="falling-card" class="box">
+          <div id="mydiv">
+            <div id="mydivheader" class=""></div>             
+          </div>
+          <div class="molecule"> <span></span> </div>
+        
+          <!-- <div class="molecule"> <span></span> </div>
+          <div class="molecule molecule2"><span></span></div>
+          <div class="molecule molecule3"><span></span></div>
+          <div class="molecule molecule4"><span></span></div> -->
+        </div>
+    </div>
+
+    <style>
+      #mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+  transform: translateX(45%);
+
+}
+
+#mydivheader {
+  /* padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff; */
+        background-color: red;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: absolute;
+        left:0;
+        top: 0;
+}
+      .box{      
+        position: relative;
+        left: 0;
+        background: url(./system.svg) no-repeat 0 0;
+        background-size: 900px;
+        height: 800px;
+        width: 900px;
+      }
+      .puase-animation .molecule{ animation-play-state: paused!important; }
+      .play-animation .molecule{ animation-play-state: running!important; }
+      .molecule{        
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: absolute;
+        left:0;
+        top: 0;
+        /* animation: animDown 10s 1s linear forwards; */
+        opacity: 1;      
+        transform: translateY(83px) translateX(391px);
+      }
+      .molecule span{ background: red; 
+        width: 100%; height: 100%; 
+        display: block; 
+        border-radius: 50%;
+        animation: shake 0.5s 0.5s linear infinite; 
+      }
+
+      @-webkit-keyframes shake {
+        0%  { -webkit-transform:     translate(2px, 1px) rotate(0deg); }
+        10% { -webkit-transform:     translate(-1px, -2px) rotate(-2deg); }
+        20% { -webkit-transform:     translate(-3px, 0px) rotate(3deg); }
+        30% { -webkit-transform:     translate(0px, 2px) rotate(0deg); }
+        40% { -webkit-transform:     translate(1px, -1px) rotate(1deg); }
+        50% { -webkit-transform:     translate(-1px, 2px) rotate(-1deg); }
+        60% { -webkit-transform:     translate(-3px, 1px) rotate(0deg); }
+        70% { -webkit-transform:     translate(2px, 1px) rotate(-2deg); }
+        80% { -webkit-transform:     translate(-1px, -1px) rotate(4deg); }
+        90% { -webkit-transform:     translate(2px, 2px) rotate(0deg); }
+        100%{ -webkit-transform:     translate(1px, -2px) rotate(-1deg); }
+      }
+    
+      .molecule-type-protein  span{
+          background-color: #FF1493; /* Pink */
+      }
+
+      .molecule-type-amino  span{
+          background-color: #00FFFF; /* Cyan */
+      }
+
+      .molecule-type-fiber  span{
+          background-color: #8B4513; /* Saddle Brown */
+      }
+
+      .molecule-type-starch  span{
+          background-color: #FFD700; /* Gold */
+      }
+
+      .molecule-type-glucose  span{
+          background-color: #FF4500; /* Orange Red */
+      }
+
+      .molecule-type-oxygen  span{
+          background-color: #FF0000; /* Red */
+      }
+
+      .molecule-type-carbon  span{
+          background-color: #008000; /* Green */
+      }
+
+      .molecule-type-water  span{
+          background-color: #ADD8E6; /* Light Blue */
+      }
+
+</style>
+<script>
+  // .add({translateY:83,translateX:391})
+  //   .add({translateY:96,translateX:122})
+  //   .add({translateY:262,translateX:109})
+  //   .add({translateY:600,translateX:83})
+  //   .add({translateY:600,translateX:150})
+  //   .add({translateY:456,translateX:190})
+  //   .add({translateY:415,translateX:65})
+  //   .add({translateY:548,translateX:65})
+  //   .add({translateY:631,translateX:65})
+  //   .add({translateY:648,translateX:201})
+  //   .add({translateY:454,translateX:201})
+  //   .add({translateY:454,translateX:252})
+//   anime({
+//   targets: '.molecule',
+//   keyframes: [
+//     {translateY:83,translateX:391},
+//     {translateY:96,translateX:122},
+//     {translateY:262,translateX:109},
+//     {translateY:600,translateX:83},
+//     {translateY:600,translateX:150},
+//     {translateY:456,translateX:190},
+//     {translateY:415,translateX:65},
+//     {translateY:548,translateX:65},
+//     {translateY:631,translateX:65},
+//     {translateY:648,translateX:201},
+//     {translateY:454,translateX:201},
+//     {translateY:454,translateX:252},  
+//   ],
+//   duration: 8000,
+//   easing: 'linear',
+//   loop: true
+// });
+
+// var tl = anime.timeline({
+//   targets: '.molecule',
+//   // delay: function(el, i) { return i * 200 },
+//   duration: 1000, // Can be inherited
+//   easing: 'linear', // Can be inherited
+//   // direction: 'alternate', // Is not inherited
+//   loop: true // Is not inherited
+// });
+
+// let box1Val = {}
+// if(true){
+//   box1Val = {translateY:96,translateX:122}
+// }else{
+//   box1Val = {translateY:550,translateX:550}
+// }
+
+// tl
+// .add({translateY:83,translateX:391})
+// .add(box1Val)
+// .add({translateY:262,translateX:109})
+// .add({translateY:262,translateX:109});
+
+
+class Molucule{
+
+  constructor() {
+    this.array = [];
+  }
+
+  addItem(item) {
+    this.array.push({'type':item[0],  'stage':item[1], 'desolve':item[2],});
+  }
+
+  getArray() {
+    return this.array;
+  }
+}
+
+
+// Usage
+const myClassArray = new Molucule();
+myClassArray.addItem(["protein", 2]);
+myClassArray.addItem(["amino acid", 3]);
+myClassArray.addItem(["fiber"], 1);
+myClassArray.addItem(["starch"] ,2 );
+myClassArray.addItem(["glucose", 3]);
+myClassArray.addItem(["oxygen", 4]);
+myClassArray.addItem(["water", 5]);
+myClassArray.addItem(["dioxide", 6]);
+myClassArray.addItem(["carbon", 2]);
+ 
+
+
+
+
+
+
+class Anim{
+  mainMuliqu = document.createElement('div');
+  mainMuliquChild = document.createElement('span');
+  classArr = ['red-v1', 'red-v1-to-orange','red-v1-to-yellow','red-v1-to-blue']
+  parentEle = document.querySelector('.box')
+  animEle;
+
+  generateEle = function(item){
+    console.log(item)
+    this.mainMuliqu.appendChild(this.mainMuliquChild);
+    this.mainMuliqu.classList.add(`molecule`);
+    this.mainMuliqu.classList.add(`molecule-type-${item.type.split(/\s+/)[0]}`);
+    this.mainMuliqu.classList.add(`molecule`+Math.round(Math.random()*6));
+    // div.classList.add(cssMainClass);
+    this.parentEle.insertAdjacentElement('afterbegin', this.mainMuliqu);    
+  }
+
+  playFirstAnim = function(item){    
+    this.animEle = anime.timeline({
+        targets: this.mainMuliqu,
+        delay: 0,
+        duration: 1000, // Can be inherited
+        easing: 'linear', // Can be inherited
+        // direction: 'alternate', // Is not inherited
+        loop: false // Is not inherited
+      });
+      this.generateEle(item)
+      this.bulueBox(item)
+  }
+
+  bulueBox = function(stage){
+    console.log('stage',stage.stage)
+    this.animEle
+    .add({translateY:82,translateX:390})
+    .add({translateY:85,translateX:125})
+    .add({translateY:202,translateX:105})
+    .add({
+      
+      translateX:stage.stage === 2 ? 180 : 32, 
+    })
+    .add({
+      delay: 5,
+      translateY:stage.stage === 2 ? 204 : 204,
+      // translateY:204,
+      translateX:stage.stage === 2 ? 32 : 32, 
+
+      
+      begin: (anim) => { 
+        console.log(anim)
+      }})
+    .add({translateY:300,translateX:29})
+    .add({translateY:304,translateX:191})
+    .add({translateY:197,translateX:189})
+    .add({translateY:199,translateX:111})
+    .add({translateY:405,translateX:111})
+    .add({translateY:409,translateX:26})
+    .add({translateY:678,translateX:22})
+    .add({translateY:677,translateX:192})
+    .add({translateY:402,translateX:195})
+    .add({translateY:400,translateX:110})
+    .add({translateY:461,translateX:110})
+    .add({translateY:458,translateX:280})
+    .add({translateY:518,translateX:298})
+    .add({translateY:529,translateX:435})
+    .add({translateY:618,translateX:433})
+    .add({translateY:622,translateX:287})
+    .add({translateY:683,translateX:286})
+    .add({translateY:682,translateX:579})
+    .add({translateY:618,translateX:578})
+    .add({translateY:617,translateX:436})
+    .add({translateY:527,translateX:437})
+    .add({translateY:520,translateX:573})
+    .add({translateY:454,translateX:589})
+    .add({translateY:455,translateX:845})
+    .add({translateY:674,translateX:843})
+    .add({translateY:678,translateX:684})
+    .add({translateY:451,translateX:678})
+    .add({translateY:451,translateX:586})
+    .add({translateY:274,translateX:590})
+    .add({translateY:270,translateX:676})
+    .add({translateY:209,translateX:677})
+    .add({translateY:208,translateX:843})
+    .add({translateY:335,translateX:848})
+    .add({translateY:337,translateX:678})
+    .add({translateY:263,translateX:673})
+    .add({translateY:270,translateX:585})
+    .add({translateY:219,translateX:575})
+    .add({translateY:208,translateX:368})
+    .add({translateY:324,translateX:364})
+    .add({translateY:327,translateX:506})
+    .add({translateY:214,translateX:509})
+    .add({translateY:228,translateX:298})
+    .add({translateY:252,translateX:283})
+    .add({translateY:453,translateX:278})
+    .add({translateY:452,translateX:237})
+
+
+
+    // this.animEle.add({translateY:83,translateX:391})
+    // .add({translateY:96,translateX:122})
+    // .add({translateY:262,translateX:109})
+    // .add({translateY:600,translateX:83})
+    // .add({translateY:600,translateX:150, begin: (anim) => {      
+    //   console.log('aa',anim)
+    //   if (stage.stage === 3) {
+    //     // anim.pause(); // Play the animation if condition is met
+    //     // this.animEle
+    //     // this.animEle.duration = 4000
+    //   } else {
+    //      // Pause the animation if condition is not met
+    //   }}})
+    // .add({translateY:456,translateX:190})
+    // .add({translateY:415,translateX:65})
+    // .add({translateY:548,translateX:65})
+    // .add({translateY:631,translateX:65})
+    // .add({translateY:648,translateX:201})
+    // .add({translateY:454,translateX:201})
+    // .add({translateY:454,translateX:252})
+  
+    // if(stage === 1){
+    //   this.animEle.add({translateY:83,translateX:391})
+    // .add({translateY:96,translateX:122})
+    // .add({translateY:262,translateX:109})
+    // }
+
+    // else if(stage === 2){
+    //   this.animEle.add({translateY:83,translateX:391})
+    // .add({translateY:96,translateX:122})
+    // .add({translateY:262,translateX:109})
+    // }
+
+    // else if(stage === 3){
+    //   this.animEle.add({translateY:83,translateX:391})
+    // .add({translateY:96,translateX:122})
+    // .add({translateY:262,translateX:109})
+    // }else{
+    //   this.animEle.add({translateY:83,translateX:391})
+    // .add({translateY:96,translateX:122})
+    // .add({translateY:262,translateX:109})
+    // }
+  }
+  // paushEvt= function(){
+  //   this.#eleMet.pause();
+  // }
+  // playEvt= function(){
+  //   this.#eleMet.play();
+  // }
+}
+
+// const molecule1 = new Anim()
+
+
+
+// .add({translateY:600,translateX:83})
+// .add({translateY:600,translateX:150})
+// .add({translateY:456,translateX:190})
+// .add({translateY:415,translateX:65})
+// .add({translateY:548,translateX:65})
+// .add({translateY:631,translateX:65})
+// .add({translateY:648,translateX:201})
+// .add({translateY:454,translateX:201})
+// .add({translateY:454,translateX:252})
+ 
+// function paushEvt(){
+//    tl.pause();
+// }
+// function playEvt(){
+//     tl.play();
+// }
+
+
+
+
+// const cssMainClass = 'red-v1-to-yellow';
+//   const classArr = ['red-v1', 'red-v1-to-orange','red-v1-to-yellow','red-v1-to-blue']
+//   const parentEle = document.querySelector('.box')
+
+//   function paushEvt(){
+//     let elements = document.querySelectorAll('.molecule')
+//     parentEle.classList.remove('play-animation')
+//     parentEle.classList.add('puase-animation')
+//   }
+//   function playEvt(){
+//     let elements = document.querySelectorAll('.molecule')
+//     parentEle.classList.remove('puase-animation')
+//     parentEle.classList.add('play-animation')
+//   }
+
+  // const generateEle = function(){
+  //   const div = document.createElement('div');
+  //   const span = document.createElement('span');
+  //   div.appendChild(span);
+  //   console.log(div)
+  //   div.classList.add(`molecule`);
+  //   div.classList.add(`molecule`+Math.round(Math.random()*6));
+  //   // div.classList.add(cssMainClass);
+
+
+  //   parentEle.insertAdjacentElement('afterbegin', div);
+  //   div.addEventListener("animationend", (event) => {
+  //     const selectClass = Math.round(Math.random()*(classArr.length-1));
+  //     console.log(selectClass)
+  //     div.classList.add(classArr[selectClass]);
+  //     div.addEventListener("animationend", (event) => {
+  //       div.style.opacity = 0
+  //     })
+  //     console.log(event)
+  //   });
+
+  // }
+  const animArray = []
+  function generateEleGroup(){
+      const moliQuatity = myClassArray.getArray();
+      for(let i = 0; i < moliQuatity.length; i++){
+        addMoliq(i)         
+      }
+      function addMoliq(i) { 
+        setTimeout(function() { 
+           const ele = new Anim;
+           ele.playFirstAnim(moliQuatity[i])
+           animArray.push(ele)
+        }, 100 * i); 
+      } 
+  }
+
+  function paushEvt(){
+    animArray.forEach(ele=> ele.animEle.pause())
+  }
+  function playEvt(){
+    animArray.forEach(ele=> ele.animEle.play())
+
+  }
+
+
+
+
+   // Drag 
+
+dragElement(document.getElementById("mydiv"));
+const mydivheader = document.getElementById('mydivheader')
+const mydivheader1 = document.getElementById('mydivheader1')
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  let animationData = {}
+  let animationDataArr = []
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    
+    mydivheader1.innerHTML = `transform: translateY(${elmnt.style.top}) translateX(${elmnt.style.left});`
+    animationData = {x: elmnt.style.left, y: elmnt.style.top}
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+    animationDataArr.push(animationData)
+    console.log(animationDataArr)
+  }
+}
+
+    
+</script>
+ 
+
+
+</body>
+</html>
