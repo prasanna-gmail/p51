@@ -8,7 +8,18 @@ let tls = []
 
 
 btn.addEventListener("click", createMolecule);
+play.addEventListener("click", playMe);
+pause.addEventListener("click", pauseMe);
 
+function playMe(params) {
+    console.log("pkp timechange: ~ playMe ~ params:", params)
+    animation.play();
+}
+function pauseMe(params) {
+    console.log("pkp timechange: ~ pauseMe ~ tl:", tl)
+    console.log("pkp timechange: ~ playMe ~ params:", params)
+    animation.pause();
+}
 var tl = gsap.timeline(
     // { paused: true, autoRemoveChildren: true }
 );
@@ -56,7 +67,6 @@ function createMolecule(molName, counts) {
         , repeat: pointsArr.length - 1
         , repeatRefresh: true
         , duration: dur
-        , onComplete: onTimelineComplete
     })
 
     // tw1.to(target, { x: 0 })
@@ -72,7 +82,6 @@ function createMolecule(molName, counts) {
         , repeat: pointsArr.length - 1
         , repeatRefresh: true
         , duration: dur
-        , onComplete: onTimelineComplete
     })
     let tw3 = gsap.to(target3, {
         x: function (ctr) {
@@ -86,7 +95,6 @@ function createMolecule(molName, counts) {
         , repeat: pointsArr.length - 1
         , repeatRefresh: true
         , duration: dur
-        , onComplete: onTimelineComplete
 
     })
     // tw.delay(0.1);
@@ -99,7 +107,15 @@ function createMolecule(molName, counts) {
 
 }
 
-var animation = new TimelineLite()
+var animation = gsap.timeline({
+    paused: true,
+    onComplete: function (evt) {
+        // what do I return here to be able to chain a promise 
+        console.log("pkp timechange: ~ evt:", evt)
+    }
+})
+
+
 animation
     .to('#d1', 1, { x: 370, y: 0 })
     .to('#d1', 1, { x: 370, y: 85 })

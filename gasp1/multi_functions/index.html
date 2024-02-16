@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multi functions chain</title>
+    <style>
+        .anim {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(0, 255, 128);
+            position: absolute;
+            left: 100;
+            top: 200;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <!-- "Rocket Man" by Chris Gannon https://cdpn.io/EjVyXN -->
+
+    <div id="d1" class="anim"></div>
+    <div id="d2" class="anim"></div>
+    <div id="d3" class="anim"></div>
+    <!--  <div class="btns">
+        <button id="btn" class="btn">ok</button>
+        <button id="play" class="btn">play</button>
+        <button id="pause" class="btn">pause</button>
+    </div> -->
+
+    <!-- partial -->
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js'></script>
+    <script>
+        function getColor() {
+            var r = Math.floor(Math.random() * 256); // range is 0-255
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            return thergb = "rgb(" + r + "," + g + "," + b + ")";
+
+        }
+        function moveTween(element) {
+            let tween = gsap.fromTo(".anim", {
+                x: 130
+                , y: function (index, target, targets) {
+                    return index * 100;
+                }
+                , backgroundColor: function (index, target, targets) {
+                    return getColor();
+                }
+            }, {
+                x: "random(0, 50, 1)"
+                , y: function (index, target, targets) {
+                    return index * 10;
+                }
+                , backgroundColor: function (index, target, targets) {
+                    return getColor();
+                }
+                , duration: 5
+            });
+            return tween
+        }
+        function returnTween(element) {
+            let ret = gsap.to(element, { backgroundColor: 'red' });
+            console.log("pkp returnTween:", ret)
+            return ret
+        }
+
+        function animateImmediately(element) {
+            return gsap.to(element, { rotate: 360 });
+        }
+
+        let tl = gsap.timeline({
+            paused: false,
+            onComplete: function (evt) {
+                // what do I return here to be able to chain a promise 
+                console.log("pkp onComplete", evt)
+            }
+        })
+
+        // tl.call(animateImmediately, ['.anim'], 2);
+        tl.call(animateImmediately, ['.anim']);
+        tl.add(returnTween('.anim'));
+        tl.add(moveTween('.anim'));
+        // tl.progress(1).progress(0).play();
+
+
+        //insert a pause at exactly 4 seconds and then call yourFunction and pass it 2 parameters, "param1" and "param2"
+        tl.addPause(4, onReachLabel, ["eeee", "rrrr"]);
+
+
+        function onReachLabel(obj, time) {
+            console.log("pkp onReachLabel", obj, time)
+            tl.play()
+        }
+
+
+    </script>
+
+</body>
+
+</html>
