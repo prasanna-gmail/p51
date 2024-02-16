@@ -16,3 +16,6 @@ https://gsap.com/community/forums/topic/14115-accessing-repeat-counter/
 
 ## Function-based values
 - https://gsap.com/docs/v3/GSAP/gsap.fromTo()/?_highlight=timelinelite#function-based-values
+
+## add delay by stagger to tween
+- https://gsap.com/community/forums/topic/11605-incremental-delay-with-multiple-matching-html-elements/

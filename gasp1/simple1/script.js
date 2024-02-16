@@ -158,7 +158,7 @@ function getRan(index, target, targets, range) {
     console.log("pkp timechange: ~ getRan ~ target:", target)
 
     console.log("pkp timechange: ~ getRan ~ target.innerHTML:", target.innerHTML)
-    target.innerHTML = index
+    // target.innerHTML = index
     const ran = Math.round(Math.random() * range)
     console.log("pkp timechange: ~ getX ~ ran:", ran)
     return ran
@@ -167,8 +167,11 @@ function getRan(index, target, targets, range) {
 
 }
 
+
+
 var dur2 = 1
 var rn = 20
+var stag1 = 0.5
 var rny = 40
 animation
     .fromTo(anim1, {
@@ -178,155 +181,193 @@ animation
     }, {
         x: function (i, t, ts) { return ps[1].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[1].y + getRan(i, t, ts, rn); },
-        duration: dur2
+        duration: dur2,
+        stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[2].x + getRan(i, t, ts, rn); },
-        y: function (i, t, ts) { return ps[2].y + getRan(i, t, ts, rn); }
+        y: function (i, t, ts) { return ps[2].y + getRan(i, t, ts, rn - 10); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[3].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[3].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[4].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[4].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[5].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[5].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[6].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[6].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[7].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[7].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[8].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[8].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[9].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[9].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[10].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[10].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[11].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[11].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[12].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[12].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[13].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[13].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[14].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[14].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[15].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[15].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[16].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[16].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[17].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[17].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[18].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[18].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[19].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[19].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[20].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[20].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[21].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[21].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[22].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[22].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[23].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[23].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[24].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[25].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[26].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[26].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[27].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[27].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[28].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[28].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[29].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[29].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[30].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[30].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[31].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[31].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[32].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[32].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[33].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[33].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[34].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[34].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[35].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[35].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[36].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[36].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[37].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[37].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[38].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[38].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[38].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[38].y + getRan(i, t, ts, rn); }
+        , stagger: stag1
     })
     .to(anim1, dur2, {
         backgroundColor: function (i, t, ts) { return getColor(i); }
@@ -337,7 +378,7 @@ animation
 
 
     .to(anim1, 1, { x: 129, y: 129 })
-    .to(anim1, 1, { x: 120, y: 99 })
+
     .to(anim1, 1, { x: 99, y: 160 })
     .to(anim1, 1, { x: 99, y: 198 })
     .to(anim1, 1, { x: 90, y: 211 })

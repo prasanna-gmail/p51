@@ -79,15 +79,19 @@
             }
         })
 
+        tl.staggerTo(".anim", 1, { x: 400, opacity: 0.1 }, 0.1);
+        tl.staggerTo(".anim", 1, { y: 400, opacity: 1 }, 0.1);
+        tl.staggerTo(".anim", 10, { x: 100, opacity: 1 }, 0.5);
+
         // tl.call(animateImmediately, ['.anim'], 2);
-        tl.call(animateImmediately, ['.anim']);
+        // tl.call(animateImmediately, ['.anim']);
         tl.add(returnTween('.anim'));
-        tl.add(moveTween('.anim'));
+        // tl.add(moveTween('.anim'));
         // tl.progress(1).progress(0).play();
 
 
         //insert a pause at exactly 4 seconds and then call yourFunction and pass it 2 parameters, "param1" and "param2"
-        tl.addPause(4, onReachLabel, ["eeee", "rrrr"]);
+        // tl.addPause(4, onReachLabel, ["eeee", "rrrr"]);
 
 
         function onReachLabel(obj, time) {
