@@ -33,6 +33,7 @@
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js'></script>
     <script>
         function getColor() {
+            // https://www.rapidtables.com/convert/color/index.html
             var r = Math.floor(Math.random() * 256); // range is 0-255
             var g = Math.floor(Math.random() * 256);
             var b = Math.floor(Math.random() * 256);
@@ -49,7 +50,7 @@
                     return getColor();
                 }
             }, {
-                x: "random(0, 50, 1)"
+                x: "random(0, 50, 20)"
                 , y: function (index, target, targets) {
                     return index * 10;
                 }
