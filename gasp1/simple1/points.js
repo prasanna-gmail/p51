@@ -1,4 +1,4 @@
-let pointsArr = [
+let ps = [
     {
         "x": 370,
         "y": 7
