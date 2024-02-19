@@ -4,6 +4,7 @@ div.anim {
     background-color: rgb(232, 62, 19);
     position: absolute;
     border-radius: 9px;
+    color: rgb(89, 89, 89);
 }
 
 img {

@@ -1,3 +1,7 @@
+
+## amplify access
+- https://sciencek8.amplify.com/grades-6-8/
+
 ## bug move
 https://codepen.io/GreenSock/pen/vYPdaOm?editors=1112
 
@@ -19,3 +23,21 @@ https://gsap.com/community/forums/topic/14115-accessing-repeat-counter/
 
 ## add delay by stagger to tween
 - https://gsap.com/community/forums/topic/11605-incremental-delay-with-multiple-matching-html-elements/
+
+
+## animation-on-bezier-path
+- https://gsap.com/community/forums/topic/36028-step-animation-on-bezier-path/
+
+## speed control
+timeScale
+- https://gsap.com/docs/v3/GSAP/Tween/timeScale()
+
+
+## task ravish
+
+- Stagger done(delay in elements start inside array)
+- inside SVG
+- E wing office
+- kill done
+- akash html
+- take my html >  create dynamic elements food then its (molecules)

@@ -50,7 +50,7 @@ var tl = gsap.timeline(
 );
 let animClass = "anim"
 let anim1 = ".anim"
-let dur = 2
+let dur = 0.5
 function onTimelineComplete(params) {
     console.log("pkp timechange: ~ onTimelineComplete ~ params:", params)
     if (params) {
@@ -138,6 +138,8 @@ var animation = gsap.timeline({
     onComplete: function (evt) {
         // what do I return here to be able to chain a promise 
         console.log("pkp timechange: ~ evt:", evt)
+
+        animation.kill();
     }
 })
 
@@ -151,28 +153,59 @@ function getColor(index) {
 }
 
 function getRan(index, target, targets, range) {
+    console.log("pkp timechange: ~ getRan ~ index:", index)
     // console.log("pkp timechange: ~ getX ~ index:", index)
     if (!range) {
         range = 100
     }
-    console.log("pkp timechange: ~ getRan ~ target:", target)
+    // console.log("pkp timechange: ~ getRan ~ target:", target)
 
-    console.log("pkp timechange: ~ getRan ~ target.innerHTML:", target.innerHTML)
-    // target.innerHTML = index
-    const ran = Math.round(Math.random() * range)
-    console.log("pkp timechange: ~ getX ~ ran:", ran)
-    return ran
+    // console.log("pkp timechange: ~ getRan ~ target.innerHTML:", target.innerHTML)
+
+
+    let value = target.computedStyleMap().get('transform');
+
+
+    let { x, y } = getTranslateXY(target)
+    // console.log("pkp timechange: ~ getRan ~ x, y:", x, y)
+    // const ran = Math.round(Math.random() * range)
+    const ran = 0
+    const ran2 = Math.round(gsap.utils.random(0, range, 2, true)());
+    console.log("pkp timechange: ~ getRan ~ ran2:", ran2)
+    // console.log("pkp timechange: ~ getX ~ ran:", ran)
+    if (index == 0) {
+        target.innerHTML = x + ":" + y;
+
+    }
+    return ran2
 
     // return thergb = "rgb(" + r + "," + g + "," + b + ")";
 
 }
 
+//reusable function WIP
+function removeElement(element) {
+    if (typeof (element) === "string") {
+        element = document.querySelector(element);
+    }
+    return function () {
+        element.parentNode.removeChild(element);
+    };
+}
+
+function getTranslateXY(element) {
+    var style = window.getComputedStyle(element);
+    var matrix = new WebKitCSSMatrix(style.transform);
+    // console.log('translateX: ', matrix.m41, matrix.m42);
+    return { x: matrix.m41, y: matrix.m42 }
+    // console.log("pkp timechange: ~ getTranslateX ~ matrix:", matrix)
+}
 
 
-var dur2 = 1
+var dur2 = 1 // how much time will play
 var rn = 20
 var stag1 = 0.5
-var rny = 40
+var rny = 20
 animation
     .fromTo(anim1, {
         x: function (i, t, ts) { return ps[0].x + getRan(i, t, ts, rn); },
@@ -372,25 +405,6 @@ animation
     .to(anim1, dur2, {
         backgroundColor: function (i, t, ts) { return getColor(i); }
     })
-
-
-
-
-
-    .to(anim1, 1, { x: 129, y: 129 })
-
-    .to(anim1, 1, { x: 99, y: 160 })
-    .to(anim1, 1, { x: 99, y: 198 })
-    .to(anim1, 1, { x: 90, y: 211 })
-    .to(anim1, 1, { x: 111, y: 221 })
-    .to(anim1, 1, { x: 121, y: 241 })
-    .to(anim1, 1, { x: 121, y: 241 })
-    .to(anim1, 1, { x: 81, y: 241 })
-    .to(anim1, 1, { x: 90, y: 281 })
-    .to(anim1, 1, { x: 104, y: 281 })
-    .to(anim1, 1, { x: 109, y: 381 })
-    .to(anim1, 1, { x: 100, y: 391 })
-    .to(anim1, 1, { x: 130, y: 399 })
     .to(anim1, 3, { opacity: 0 });
 
 // setTimeout(() => { }, 500);
