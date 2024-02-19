@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multi functions chain</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .ball {
+            border-radius: 50%;
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        #svg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #path {
+            fill: none;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        #ball1 {
+            width: 80px;
+            height: 80px;
+            background: dodgerblue;
+        }
+
+        #ball2 {
+            width: 60px;
+            height: 60px;
+            background: mediumvioletred;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <!-- "Rocket Man" by Chris Gannon https://cdpn.io/EjVyXN -->
+
+
+
+
+
+
+    <svg id="svg">
+        <path id="path"></path>
+    </svg>
+
+    <div id="ball1" class="ball"></div>
+    <div id="ball2" class="ball"></div>
+
+    <script type="module">
+        import { TweenMax as gsap2 } from "https://unpkg.com/gsap@2.1.3/TweenMax.js?module";
+        import { gsap as gsap3 } from "https://unpkg.com/gsap@3.2.6/index.js?module";
+        import { MotionPathPlugin } from "https://unpkg.com/gsap@3.2.6/MotionPathPlugin.js?module";
+
+        gsap3.registerPlugin(MotionPathPlugin);
+
+        var randomX = gsap3.utils.random(0, window.innerWidth, true);
+        var randomY = gsap3.utils.random(0, window.innerHeight, true);
+        var points = [];
+
+        for (var i = 0; i < 6; i++) {
+            points.push({
+                x: randomX(),
+                y: randomY(),
+            })
+        }
+
+        gsap2.set("#ball1", {
+            xPercent: -50,
+            yPercent: -50
+        });
+
+        gsap3.set("#ball2", {
+            xPercent: -50,
+            yPercent: -50
+        });
+
+        gsap2.to("#ball1", 5, {
+            bezier: {
+                values: points,
+                type: "soft"
+            }
+        });
+
+        gsap3.to("#ball2", {
+            duration: 5,
+            motionPath: {
+                path: softBezier("#ball2", points)
+            }
+        });
+
+        // visualize path
+        document.querySelector("#path").setAttribute("d", softBezier("#ball2", points));
+
+        function softBezier(target, values) {
+
+            var points = [{
+                x: gsap3.getProperty(target, "x"),
+                y: gsap3.getProperty(target, "y"),
+            }, ...values];
+
+            var size = points.length;
+            var mids = [];
+            var p1, p2, i;
+
+            for (i = 0; i < size - 1; i++) {
+
+                p1 = points[i];
+                p2 = points[i + 1];
+
+                mids.push({
+                    x: (p1.x + p2.x) / 2,
+                    y: (p1.y + p2.y) / 2
+                });
+            }
+
+            var path = `M${points[0].x} ${points[0].y} Q`
+
+            for (i = 1; i < size - 2; i++) {
+
+                p1 = points[i];
+                p2 = mids[i];
+
+                path += ` ${p1.x} ${p1.y} ${p2.x} ${p2.y}`;
+            }
+
+            p1 = points[i];
+            p2 = points[i + 1];
+
+            path += ` ${p1.x} ${p1.y} ${p2.x} ${p2.y}`;
+
+            return path;
+        }
+
+
+    </script>
+
+</body>
+
+</html>
