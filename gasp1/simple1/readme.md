@@ -32,6 +32,9 @@ https://gsap.com/community/forums/topic/14115-accessing-repeat-counter/
 timeScale
 - https://gsap.com/docs/v3/GSAP/Tween/timeScale()
 
+## data var
+
+- https://gsap.com/community/forums/topic/29649-getting-the-data-attribute-to-display-div/
 
 ## task ravish
 
@@ -41,3 +44,6 @@ timeScale
 - kill done
 - akash html
 - take my html >  create dynamic elements food then its (molecules)
+
+- Add labels on timeline for branching to different chambers
+    - And also to break the molecules into sub-molecules and play animation from there.

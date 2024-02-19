@@ -5,6 +5,8 @@ div.anim {
     position: absolute;
     border-radius: 9px;
     color: rgb(89, 89, 89);
+    top: 0px;
+    left: 0px;
 }
 
 img {

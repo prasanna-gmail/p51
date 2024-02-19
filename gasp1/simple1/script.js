@@ -153,7 +153,7 @@ function getColor(index) {
 }
 
 function getRan(index, target, targets, range) {
-    console.log("pkp timechange: ~ getRan ~ index:", index)
+    // console.log("pkp timechange: ~ getRan ~ index:", index)
     // console.log("pkp timechange: ~ getX ~ index:", index)
     if (!range) {
         range = 100
@@ -171,7 +171,7 @@ function getRan(index, target, targets, range) {
     // const ran = Math.round(Math.random() * range)
     const ran = 0
     const ran2 = Math.round(gsap.utils.random(0, range, 2, true)());
-    console.log("pkp timechange: ~ getRan ~ ran2:", ran2)
+    // console.log("pkp timechange: ~ getRan ~ ran2:", ran2)
     // console.log("pkp timechange: ~ getX ~ ran:", ran)
     if (index == 0) {
         target.innerHTML = x + ":" + y;
@@ -201,6 +201,10 @@ function getTranslateXY(element) {
     // console.log("pkp timechange: ~ getTranslateX ~ matrix:", matrix)
 }
 
+function muFun(params) {
+    console.log("pkp timechange: ~ muFun ~ params:", params)
+
+}
 
 var dur2 = 1 // how much time will play
 var rn = 20
@@ -210,22 +214,42 @@ animation
     .fromTo(anim1, {
         x: function (i, t, ts) { return ps[0].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[0].y + getRan(i, t, ts, rn); },
-        backgroundColor: function (i, t, ts) { return getColor(i); }
+        // backgroundColor: function (i, t, ts) { return getColor(i); }
+        backgroundColor: "random([red, blue, green])"
     }, {
         x: function (i, t, ts) { return ps[1].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[1].y + getRan(i, t, ts, rn); },
+
+        // x: "random([360, 365, 370, 380])",
+        // y: "random([94,98,102,104])",
+        // keyframes: [{ x: 360, duration: 1 }, { y: 100, duration: 1 }],
         duration: dur2,
         stagger: stag1
+        , data: { d: "strat data" }
+        // , delay: -0.25
+        , onComplete: (sss) => {
+            console.log("pkp timechange: ~ sss:", animation.data)
+            console.log('complete1')
+        }
+        , onStart: () => { console.log('start1') }
     })
     .to(anim1, dur2, {
+
+        // x: "random([360, 365, 370, 380])",
+        // y: "random([94,98,102,104])"
+
         x: function (i, t, ts) { return ps[2].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[2].y + getRan(i, t, ts, rn - 10); }
+        // keyframes: [{ x: 100, duration: 1, ease: Power1.easeInOut }, { y: 120, duration: 1, ease: Power1.easeInOut }]
+        // , startAt: { x: -100, opacity: 1 }
         , stagger: stag1
+        , onComplete: () => { console.log('complete2') }
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[3].x + getRan(i, t, ts, rn); },
         y: function (i, t, ts) { return ps[3].y + getRan(i, t, ts, rn); }
         , stagger: stag1
+        , onComplete: () => { console.log('complete3') }
     })
     .to(anim1, dur2, {
         x: function (i, t, ts) { return ps[4].x + getRan(i, t, ts, rn); },
