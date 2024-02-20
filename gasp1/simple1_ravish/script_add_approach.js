@@ -1,3 +1,23 @@
+fish.addEventListener("click", function () {
+    createNewFood("fish", "protien")
+});
+corn.addEventListener("click", function () {
+    createNewFood("corn", "starch")
+});
+
+
+function createNewFood(foodName, molName) {
+
+    console.log(foodName, molName)
+    let newFood = document.createElement('div');
+    newFood.classList.add(foodName);
+    newFood.classList.add("anim");
+    document.body.appendChild(newFood)
+
+    let tl1 = intro();
+    tl1.play();
+}
+
 function intro() {
     var tl = gsap.timeline();
     tl.fromTo(".anim", {
