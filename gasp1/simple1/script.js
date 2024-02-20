@@ -124,8 +124,26 @@ function createTimeline(callee) {
     return animTL
 
 }
+
+
+function createMolElement(callee) {
+
+    var target = document.createElement("div");
+    target.classList.add(animClass);
+    target.classList.add("protein");
+    document.body.appendChild(target);
+
+}
 function createMolecules(callee) {
     console.log("pkp timechange: ~ createMolecules ~ callee:", callee)
+
+    let cnt = 5
+    for (let index = 0; index < cnt; index++) {
+        const element = createMolElement("");
+        console.log("pkp timechange: ~ createMolecules ~ element:", element)
+
+    }
+
     let tl = createTimeline("from create mols")
     console.log("pkp timechange: ~ createMolecules ~ tl:", tl)
     doAnimation(tl, "from createMolecules")
