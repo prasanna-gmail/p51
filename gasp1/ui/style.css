@@ -52,32 +52,43 @@ protein,amino acid,fiber,starch,glucose,oxygen,carbon dioxide,water
   box-sizing: border-box;
 }
 
-body{ margin: 0; background: #ccc;}
+body{ margin: 0; background: #fffcf4;}
 
 .bottom-card{
   position: absolute;bottom: 0;left:50%; transform: translateX(-50%); font-family: Arial, Helvetica, sans-serif; font-size: 12px;
 }
+
+
+.top-card{
+  position: absolute;top: 0;left:50%; transform: translateX(-50%); font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+}
+
 .bottom-card h4{ font-size: 12px; padding: 0 0 8px; margin: 0;}
 
-.bottom-card-inner{
+.card-inner{
     background-color: #fafafa;
     border-radius:4px;
-    padding: 16px;
+    padding:10px 16px;
     display: flex;
     gap:20px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    border: 1px solid #ffffff;
 }
 .card{
     border:1px solid #cecece;
     background: #ffffff;
     padding: 4px;
-    width:70px;
+    min-width:70px;
     display: flex;
     flex-direction: column;
     position: relative;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
+}
+.card:hover{
+  border-color: #333;
 }
 
 .disable{
@@ -103,6 +114,7 @@ body{ margin: 0; background: #ccc;}
     display: flex;
     align-items: end;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 
