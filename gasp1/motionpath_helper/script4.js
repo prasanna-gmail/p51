@@ -10,7 +10,7 @@ gsap.set(".astronaut", { scale: 0.5, autoAlpha: 1 });
 function createGroup(callee) {
     console.log("pkp timechange: ~ createGroup ~ callee:", callee)
 
-    var data = `
+    var gElement = `
     <g>
     <path
         d="m362.56,200.05l-98.87-98.87c-3.38-3.38-7.78-5.39-12.51-5.72l-12.33-12.33c3.47-1.17,7.14-1.78,10.89-1.78h0c9.04,0,17.53,3.51,23.9,9.88l48.9,48.9,40.01,40.01v19.91h0Zm-79.92-117.82c-9.07-9.07-20.99-13.61-32.9-13.61-11.22,0-22.45,4.03-31.3,12.08l28.16,28.16c.99-.49,2.06-.73,3.14-.73,1.8,0,3.59.68,4.96,2.05l102.56,102.56c5.24,5.24,11.43,8.95,18.02,11.13v-48.99l-43.74-43.74-48.9-48.9h0Z" />
@@ -28,34 +28,15 @@ function createGroup(callee) {
         d="m227.5,414.67c-103.21,0-187.17-83.96-187.17-187.17S124.29,40.33,227.5,40.33s187.17,83.96,187.17,187.17-83.96,187.17-187.17,187.17h0Zm0-387.06c-53.39,0-103.59,20.79-141.34,58.55-37.75,37.75-58.55,87.95-58.55,141.34s20.79,103.59,58.55,141.34c37.75,37.75,87.95,58.55,141.34,58.55s103.59-20.79,141.34-58.55c37.75-37.75,58.55-87.95,58.55-141.34s-20.79-103.59-58.55-141.34c-37.75-37.75-87.95-58.55-141.34-58.55h0Z" />
 </g>`;
 
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(data, "image/svg+xml");
-    console.log("pkp timechange: ~ createGroup ~ doc:", doc)
-    document.body.appendChild(doc.lastChild);
-
+    let group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    group.setAttribute("name", "mygroup")
+    group.innerHTML = gElement
+    return group;
 }
-createGroup("oooo")
-gsap.to(".astronaut", {
-    motionPath: {
-        path: "#path",
-        align: "#path",
-        alignOrigin: [0.5, 0.5],
-        // offsetX: 112,
-        // offsetY: 112,
-        curviness: 0,
-        autoRotate: 90
-    },
-    transformOrigin: "10% 150%",
-    duration: 5,
 
-    // resolution: 2,
-    relative: true,
-    ease: "power3.in",
-});
-
-MotionPathHelper.create(".astronaut");
-
-
-/**
- * EO Part 3
- */
+function createSVG(callee) {
+    const svg = document.querySelector("svg");
+    let group = createGroup("ppp")
+    svg.appendChild(group);
+}
+createSVG("oooo")
