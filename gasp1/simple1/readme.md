@@ -35,6 +35,15 @@ timeScale
 ## data var
 
 - https://gsap.com/community/forums/topic/29649-getting-the-data-attribute-to-display-div/
+    
+## timeline add approach
+- https://gsap.com/docs/v3/GSAP/gsap.timeline()/
+
+
+
+## path random xy
+- https://gsap.com/community/forums/topic/25167-use-random-values-in-motionpath/
+- https://codepen.io/mail2lulu/pen/yLwrXGr
 
 ## task ravish
 

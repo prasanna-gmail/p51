@@ -70,6 +70,8 @@ anim.to(targets, { scale: 1, ease: "elastic", duration: 1.25 });
 
 // make an amimation for all 14 paths and the targets
 for (let i = 0; i < targetArrays.length; i++) {
+  console.log("pkp timechange: ~ paths[i]:", paths[i])
+
   anim.to(targetArrays[i], {
     motionPath: {
       path: paths[i],
