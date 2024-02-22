@@ -140,18 +140,22 @@ body{ margin: 0; background: #fffcf4;}
     display:flex;
     gap: 10px;
 }
-div.fish{
-  background-color: #2f9af1;
+.fish{
+  fill:#2f9af1;
 }
-div.corn{
-  background-color: #eb5325;
+.corn{
+  fill:#eb5325;
 }
-div.anim1{
-  background-color: blueviolet;
+.anim1{
+  fill:blueviolet;
 }
-div.protien{
-  background-color: #7cee1f;
+.protien{
+  fill:#2610eb;
+  transform: scale(0.045);
 }
-div.starch{
-  background-color: #d711e9;
+.starch{
+  fill:#d711e9;
+}
+.hide{
+  opacity: 0;
 }

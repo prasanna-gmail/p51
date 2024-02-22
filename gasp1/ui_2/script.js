@@ -8,6 +8,8 @@ let sIntestine_rndX = 120;
 let sIntestine_rndY = 100;
 let fishClick = 0;
 let cornClick = 0;
+let showProtien = true;
+let showStarch = true;
 
 fish.addEventListener("click", function () {
     fishClick++
@@ -18,7 +20,21 @@ corn.addEventListener("click", function () {
     createNewFood("corn", "starch", cornClick)
 });
 
+proteinBtn.addEventListener("click", function () {
 
+    let protienEle = document.querySelectorAll(".protien")
+    protienEle.forEach(ele => {
+        ele.classList.toggle("hide");
+    })
+})
+
+starchBtn.addEventListener("click", function () {
+
+    let starchEle = document.querySelectorAll(".starch")
+    starchEle.forEach(ele => {
+        ele.classList.toggle("hide");
+    })
+})
 
 
 var dur2 = 3 // how much time will play
@@ -60,14 +76,14 @@ function createNewFood(foodName, molName, ctr) {
 
 
     let svgTag = document.getElementById("container");
-    console.log("svgTag--->",svgTag)
-    let foodGroup=document.createElementNS("http://www.w3.org/2000/svg","g");
+    console.log("svgTag--->", svgTag)
+    let foodGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
 
-    foodGroup.appendChild(circleElement(foodName,ctr))
+    foodGroup.appendChild(circleElement(foodName, ctr))
     svgTag.appendChild(foodGroup);
 
 
-    
+
     let foodP1 = foodPipe1Animation(foodAnim);
     foodP1.play();
     foodP1.then(function () {
@@ -87,39 +103,67 @@ function getColor(index) {
 
 }
 
-function circleElement(foodName,ctr,index){
+function circleElement(foodName, ctr, index) {
     let ns = "http://www.w3.org/2000/svg";
-    let innerCircle = document.createElementNS(ns,"circle");
+    let innerCircle = document.createElementNS(ns, "circle");
     // innerCircle.setAttribute("cx","70");
     // innerCircle.setAttribute("cy", "70");
     innerCircle.setAttribute("r", "7");
     // innerCircle.setAttribute("stroke", "red");
     innerCircle.setAttribute("stroke-width", "1");
-    innerCircle.setAttribute("fill", getColor());
-    innerCircle.setAttribute("id",foodName+ctr);
+    // innerCircle.setAttribute("fill", getColor());
+    innerCircle.setAttribute("id", foodName + ctr);
     innerCircle.classList.add(foodName);
     innerCircle.classList.add("anim");
 
     return innerCircle;
 }
 
-function circleMoleculeElement(molName,id,shape){
+function createProtienMolecule(molName, id) {
+    let gElement = `
+    
+    <path
+        d="m362.56,200.05l-98.87-98.87c-3.38-3.38-7.78-5.39-12.51-5.72l-12.33-12.33c3.47-1.17,7.14-1.78,10.89-1.78h0c9.04,0,17.53,3.51,23.9,9.88l48.9,48.9,40.01,40.01v19.91h0Zm-79.92-117.82c-9.07-9.07-20.99-13.61-32.9-13.61-11.22,0-22.45,4.03-31.3,12.08l28.16,28.16c.99-.49,2.06-.73,3.14-.73,1.8,0,3.59.68,4.96,2.05l102.56,102.56c5.24,5.24,11.43,8.95,18.02,11.13v-48.99l-43.74-43.74-48.9-48.9h0Z" />
+    <path
+        d="m346.19,266.44l-12.18-12.18c-.24-4.65-2.16-9.18-5.63-12.66l-102.56-102.56c-8.05-8.05-11.25-19.4-9.31-30.04l16.33,16.33c.82,1.36,1.8,2.62,2.94,3.75l102.56,102.56c6.15,6.15,9.61,14.34,9.75,23.06.07,4.05-.59,8.02-1.9,11.73h0Zm-101.42-146.34c-.7-.7-1.21-1.51-1.56-2.37l-30.62-30.62c-13.77,18.22-12.36,44.33,4.23,60.93l102.56,102.56c2.18,2.18,2.51,5.5,1.01,8.03l28.06,28.06c16.84-18.06,16.47-46.44-1.13-64.04l-102.56-102.56h0Z" />
+    <path
+        d="m235.52,373.66c-8.93,0-17.31-3.47-23.6-9.76l-101.43-101.43v-18.73c2.11,1.33,4.09,2.91,5.91,4.73l105.47,105.47c1.29,1.29,2.75,2.38,4.35,3.26l15.81,15.81c-2.13.42-4.32.64-6.51.64h0Zm-4.66-28.7l-105.47-105.47c-7.73-7.73-17.52-12.16-27.62-13.31v41.57l105.15,105.15c8.99,8.99,20.79,13.48,32.6,13.48,9.97,0,19.95-3.21,28.23-9.62l-30.17-30.17c-.99-.31-1.93-.85-2.72-1.63h0Z" />
+    <path
+        d="m319.8,288.28c-1.66.25-3.36.38-5.08.38-8.94,0-17.32-3.47-23.62-9.76l-102.56-102.56c-3.73-3.73-8.68-5.78-13.96-5.78-2.27,0-4.47.38-6.55,1.11l-10.56-10.56c5.13-3.01,10.99-4.61,17.1-4.61,9.05,0,17.54,3.51,23.91,9.88l46.58,46.59c.54.93,1.21,1.81,2.01,2.62l72.7,72.7h0Zm-63.41-81.99l-48.9-48.9c-9.07-9.07-20.99-13.61-32.91-13.61s-23.83,4.54-32.91,13.61l-2.95,2.95,27.94,27.94,2.95-2.95c1.37-1.37,3.17-2.05,4.96-2.05s3.59.68,4.96,2.05l102.56,102.56c8.99,8.99,20.8,13.49,32.61,13.49,9.59,0,19.18-2.96,27.26-8.89l-85.89-85.89.3-.3h0Z" />
+    <path
+        d="m268.58,351.35l-11.33-11.33c.66-5.67-1.18-11.58-5.52-15.92l-105.47-105.47c-7.99-7.99-11.2-19.26-9.34-29.86l16.73,16.73c.74,1.14,1.6,2.2,2.57,3.17l105.47,105.47c10.04,10.04,12.34,24.95,6.89,37.21h0Zm-103.38-151.68c-.59-.59-1.05-1.27-1.39-1.99l-30.88-30.88c-13.67,18.22-12.24,44.25,4.33,60.81l105.48,105.47c2.57,2.57,2.57,6.77,0,9.34l-.53.53,27.94,27.94.53-.53c17.98-17.98,17.98-47.24,0-65.22l-105.47-105.47h0Z" />
+    <path
+        d="m227.5,442.28c-118.43,0-214.78-96.35-214.78-214.78S109.07,12.72,227.5,12.72s214.78,96.35,214.78,214.78-96.35,214.78-214.78,214.78h0ZM388.37,66.63c-20.89-20.89-45.22-37.29-72.31-48.75C288,6.02,258.21,0,227.5,0s-60.5,6.02-88.56,17.88c-27.09,11.46-51.42,27.86-72.31,48.75-20.89,20.89-37.29,45.22-48.75,72.31C6.02,167,0,196.79,0,227.5s6.02,60.5,17.88,88.56c11.46,27.09,27.86,51.42,48.75,72.31,20.89,20.89,45.22,37.29,72.31,48.75,28.05,11.86,57.85,17.88,88.56,17.88s60.5-6.02,88.55-17.88c27.09-11.46,51.42-27.86,72.31-48.75,20.89-20.89,37.29-45.22,48.75-72.31,11.86-28.05,17.88-57.85,17.88-88.56s-6.02-60.5-17.88-88.56c-11.46-27.09-27.86-51.42-48.75-72.31h0Z" />
+    <path
+        d="m227.5,414.67c-103.21,0-187.17-83.96-187.17-187.17S124.29,40.33,227.5,40.33s187.17,83.96,187.17,187.17-83.96,187.17-187.17,187.17h0Zm0-387.06c-53.39,0-103.59,20.79-141.34,58.55-37.75,37.75-58.55,87.95-58.55,141.34s20.79,103.59,58.55,141.34c37.75,37.75,87.95,58.55,141.34,58.55s103.59-20.79,141.34-58.55c37.75-37.75,58.55-87.95,58.55-141.34s-20.79-103.59-58.55-141.34c-37.75-37.75-87.95-58.55-141.34-58.55h0Z" />
+`;
+
+    let group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    group.setAttribute("name", "mygroup")
+    group.setAttribute("id", id);
+    group.setAttribute("width", "10");
+    group.setAttribute("height", "10");
+    // group.setAttribute("transform", "scale(0.045)");
+    group.classList.add(molName);
+    group.classList.add("anim1");
+    group.innerHTML = gElement
+    return group;
+}
+function circleMoleculeElement(molName, id, shape) {
     let ns = "http://www.w3.org/2000/svg";
-    let innerCircle = document.createElementNS(ns,shape);
+    let innerCircle = document.createElementNS(ns, shape);
     // innerCircle.setAttribute("cx","70");
     // innerCircle.setAttribute("cy", "70");
-    
+
     // innerCircle.setAttribute("stroke", "red");
     innerCircle.setAttribute("stroke-width", "1");
-    innerCircle.setAttribute("fill", getColor());
+    // innerCircle.setAttribute("fill", getColor());
     innerCircle.setAttribute("id", id);
     innerCircle.classList.add(molName);
     innerCircle.classList.add("anim1");
-    if(shape == "rect"){
+    if (shape == "rect") {
         innerCircle.setAttribute("width", "10");
         innerCircle.setAttribute("height", "10");
-    }else{
-        innerCircle.setAttribute("r", "7");
     }
 
     return innerCircle;
@@ -131,28 +175,24 @@ function createNewMolecules(molName, ctr) {
         let id = molName + "_" + ctr + "_" + i
         let target = "#" + id;
 
+        let shape;
 
-        // newMoleculeEle = document.createElement("div");
-        // newMoleculeEle.classList.add(molName);
-        
-        // console.log("🚀 ~ createNewMolecules ~ target:", target)
-        // newMoleculeEle.setAttribute("id", id);
-        // newMoleculeEle.classList.add("anim1");
-        // document.body.appendChild(newMoleculeEle)
-
-let shape;
-if(molName == "starch"){
-    shape = "rect"
-}else if(molName == "protien"){
-    shape = "circle"
-}
         let svgTag = document.getElementById("container");
-        console.log("svgTag--->",svgTag)
-        let foodGroup=document.createElementNS("http://www.w3.org/2000/svg","g");
-        
-        foodGroup.appendChild(circleMoleculeElement(molName,id,shape))
-        svgTag.appendChild(foodGroup);
-    
+        console.log("svgTag--->", svgTag)
+        let foodGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+
+        if (molName == "starch") {
+            shape = "rect";
+            foodGroup.appendChild(circleMoleculeElement(molName, id, shape))
+            svgTag.appendChild(foodGroup);
+        } else if (molName == "protien") {
+            svgTag.appendChild(createProtienMolecule(molName, id));
+            shape = "circle"
+        }
+
+       
+
         master2.add(go(target))
     }
     // let moleP2Anim = moleculePipe2Animation(moleAnim);
@@ -248,7 +288,7 @@ function getAllPath(seqNo, callee) {
     // let p4 = getsStep4();
 
     //   allPath.push(p1,p2,p3)
-    const allPath = p1.concat(p2, p3, p4, p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,p31,p32,p33,p34,p35,p36,p37,p38,p39,p40,p41,p42,p43,p44,p45,p46,p47,p48,p49,p50,p51)
+    const allPath = p1.concat(p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, p37, p38, p39, p40, p41, p42, p43, p44, p45, p46, p47, p48, p49, p50, p51)
     console.log("🚀 ~ getAllPath ~ allPath:", allPath)
     return allPath;
 
@@ -510,6 +550,41 @@ function conclusion() {
     })
 
     return tl;
+}
+
+function createCO2() {
+    let carbon;
+    setInterval(() => {
+        let svgTag = document.getElementById("container");
+        console.log("svgTag--->", svgTag)
+        let carbonGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+        carbonGroup.appendChild(carbonMolecule(molName, id, shape))
+        svgTag.appendChild(carbonGroup);
+    })
+
+
+
+
+    let co2 = gsap.timeline();
+
+}
+
+function carbonMolecule() {
+    let ns = "http://www.w3.org/2000/svg";
+    let innerCircle = document.createElementNS(ns, "circle");
+    innerCircle.setAttribute("r", "7");
+    innerCircle.setAttribute("stroke-width", "1");
+    innerCircle.setAttribute("fill", getColor());
+    innerCircle.setAttribute("id", foodName + ctr);
+    innerCircle.classList.add(foodName);
+    innerCircle.classList.add("anim");
+
+    return innerCircle;
+}
+
+function goC02() {
+
 }
 
 // stitch them together in a master timeline...
