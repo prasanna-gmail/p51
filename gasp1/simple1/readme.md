@@ -39,7 +39,8 @@ timeScale
 ## timeline add approach
 - https://gsap.com/docs/v3/GSAP/gsap.timeline()/
 
-
+## svg group scale
+- https://stackoverflow.com/questions/71050819/how-to-modify-the-size-of-a-g-svg-element
 
 ## path random xy
 - https://gsap.com/community/forums/topic/25167-use-random-values-in-motionpath/
