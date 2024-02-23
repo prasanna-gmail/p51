@@ -6,8 +6,10 @@ div.anim {
     border-radius: 20px;
 }
 
-img {
+.mainSvgContainer {
     position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .btns {
