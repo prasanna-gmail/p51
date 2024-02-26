@@ -1,5 +1,5 @@
 gsap.registerPlugin(MotionPathPlugin);
-let moleCount = 25;
+let moleCount = 50;
 let foodAnim = ".anim";
 let moleAnim = ".anim1";
 let stomach_rndX = 100;
@@ -119,14 +119,7 @@ function circleElement(foodName, ctr, index) {
     return innerCircle;
 }
 
-/**
- * 
- * @param {mol is used } molName 
- * @param {*} id 
- * @param {*} ctr 
- * @returns 
- */
-function createProtienMolecule(molName, id, ctr) {
+function createProtienMolecule(molName, id) {
     let gElement = `
     
     <path
@@ -153,14 +146,8 @@ function createProtienMolecule(molName, id, ctr) {
     // group.setAttribute("transform", "scale(0.045)");
     group.classList.add(molName);
     group.classList.add("anim1");
-    const cls = "protein_" + ctr
-    group.classList.add(cls);
     group.innerHTML = gElement
-
-    return {
-        group: group,
-        cls: cls
-    };
+    return group;
 }
 function circleMoleculeElement(molName, id, shape) {
     let ns = "http://www.w3.org/2000/svg";
@@ -184,10 +171,9 @@ function circleMoleculeElement(molName, id, shape) {
 function createNewMolecules(molName, ctr) {
     let master2 = gsap.timeline();
     let newMoleculeEle;
-    let selector;
     for (let i = 0; i < moleCount; i++) {
         let id = molName + "_" + ctr + "_" + i
-        target = "#" + id;
+        let target = "#" + id;
 
         let shape;
 
@@ -201,37 +187,14 @@ function createNewMolecules(molName, ctr) {
             foodGroup.appendChild(circleMoleculeElement(molName, id, shape))
             svgTag.appendChild(foodGroup);
         } else if (molName == "protien") {
-            let molProtein =createProtienMolecule(molName, id, ctr) ;
-            selector = "."+molProtein.cls;
-            svgTag.appendChild(molProtein.group);
+            svgTag.appendChild(createProtienMolecule(molName, id));
             shape = "circle"
         }
 
+       
 
-        
-        // master2.add(go(target))
-        // master2
-        // .add(getsStep1To(master2,target))
-        // .add(getsStep2To(master2,target))
-        // .add(getsStep3To(master2,target))
-        // .add(getsStep4To(master2,target))
-        // .add(getsStep5To(master2,target))
-        // .add(getsStep6To(master2,target))
-
+        master2.add(go(target))
     }
-    // master2.duration(5)
-    master2
-        .add(getsStep1To(master2, selector))
-        .add(getsStep2To(master2, selector))
-        .add(getsStep3To(master2, selector))
-        .add(getsStep4To(master2, selector))
-        .add(getsStep5To(master2, selector))
-        .add(getsStep6To(master2, selector))
-        .add(getsStep7To(master2, selector))
-        .add(getsStep8To(master2, selector))
-        .add(getsStep9To(master2, selector))
-        .add(getsStep10To(master2, selector))
-        .add(getsStep11To(master2, selector))
     // let moleP2Anim = moleculePipe2Animation(moleAnim);
     // moleP2Anim.play();
     //with a gap of 2 seconds
@@ -330,113 +293,6 @@ function getAllPath(seqNo, callee) {
     return allPath;
 
 }
-
-function getsStep1To(tl, selector) {
-    // return [{ x: 360, y: 82 }]
-    tl.fromTo(selector, {
-        x: 360
-        , y: 82
-    },{
-        x: 360
-        , y: 82
-    }
-    )
-    return tl;
-}
-
-function getsStep2To(tl, selector) {
-    // return [{ x: 115, y: 82 }]
-    tl.to(selector, 5,{
-        x: 115
-        , y: 82,
-        rotate:90,
-        stagger:0.40,
-        
-    });
-    return tl;
-}
-
-function getsStep3To(tl, selector) {
-    // return [{ x: 110, y: 160 }]
-    tl.to(selector,2, {
-        x: 110
-        , y: 160,
-        stagger:0.20,
-    });
-    return tl;
-}
-
-function getsStep4To(tl, selector) {
-    // return [{ x: 110, y: 200 }]
-    tl.to(selector, 2,{
-        x: 110
-        , y: 200
-    });
-    return tl;
-}
-
-
-function getsStep5To(tl, selector) {
-    // return [{ x: 110, y: 250 }]
-    tl.to(selector,2, {
-        x: 110
-        , y: 250
-    });
-    return tl;
-}
-
-function getsStep6To(tl, selector) {
-    // return [{ x: 110, y: 300 }]
-    tl.to(selector, 2,{
-        x: 110
-        , y: 300
-    });
-    return tl;
-}
-
-function getsStep7To(tl, selector) {
-    // return [{ x: 110, y: 400 }]
-    tl.to(selector, 2,{
-        x: 110
-        , y: 400
-    });
-    return tl;
-}
-function getsStep8To(tl, selector) {
-    // return [{ x: 110, y: 500 }]
-    tl.to(selector, 2,{
-        x: 110
-        , y: 500
-    });
-    return tl;
-}
-
-function getsStep9To(tl, selector) {
-    // return [{ x: 110, y: 600 }]
-    tl.to(selector, 2,{
-        x: 110
-        , y: 600
-    });
-    return tl;
-}
-function getsStep10To(tl, selector) {
-    // return [{ x: 150, y: 600 }]
-    tl.to(selector, 2,{
-        x: 150
-        , y: 600
-    });
-    return tl;
-}
-
-function getsStep11To(tl, selector) {
-    // return [{ x: 150, y: 400 }]
-    tl.to(selector, 2,{
-        x: 150
-        , y: 400
-    });
-    return tl;
-}
-
 
 
 function getsStep1(params) {

@@ -1,0 +1,161 @@
+div.anim , div.anim1 {
+    width: 20px;
+    height: 20px;
+    background-color: bisque;
+    position: absolute;
+    border-radius: 20px;
+}
+
+img {
+    position: absolute;
+}
+
+.btns {
+    right: 10px;
+    position: absolute;
+    top: 20px;
+}
+
+div.anim.amino {
+    background-color: rgb(191, 191, 32);
+    border-radius: 10px;
+}
+
+div.anim.protein {
+    background-color: rgb(194, 34, 164);
+    border-radius: 5px;
+}
+
+
+.anim-container{
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  margin: 0 auto;
+}
+
+.anim-container .img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: block;
+}
+/**
+protein,amino acid,fiber,starch,glucose,oxygen,carbon dioxide,water 
+*/
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body{ margin: 0; background: #fffcf4;}
+
+.bottom-card{
+  position: absolute;bottom: 0;left:50%; transform: translateX(-50%); font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+}
+
+
+.top-card{
+  position: absolute;top: 0;left:50%; transform: translateX(-50%); font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+}
+
+.bottom-card h4{ font-size: 12px; padding: 0 0 8px; margin: 0;}
+
+.card-inner{
+    background-color: #fafafa;
+    border-radius:4px;
+    padding:10px 16px;
+    display: flex;
+    gap:20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    border: 1px solid #ffffff;
+}
+.card{
+    border:1px solid #cecece;
+    background: #ffffff;
+    padding: 4px;
+    min-width:70px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.card:hover{
+  border-color: #333;
+}
+
+.disable{
+  opacity: 0.5;
+  background:#ebebeb;
+}
+
+.card-img{
+    height:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+.card-img img{max-width: 25px;}
+.card-title{
+    font-size: 12px;
+    background:#ebebeb;
+    color:#000000;
+    
+    padding: 6px;
+    text-align: center;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.right-card{
+    position:fixed;
+    right:0;
+    top:0;
+}
+.right-card-inner{
+    overflow: hidden;
+    width: 250px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+
+}
+.card-slide{
+    white-space: nowrap;
+    overflow: auto;
+    margin:0 0 -15px; 
+    padding:0 0 15px;
+    display:flex;
+    gap: 10px;
+}
+.fish{
+  fill:#2f9af1;
+}
+.corn{
+  fill:#eb5325;
+}
+.anim1{
+  fill:blueviolet;
+}
+.protien{
+  fill:#2610eb;
+  transform: scale(0.045);
+}
+.starch{
+  fill:#d711e9;
+}
+.hide{
+  opacity: 0;
+}
